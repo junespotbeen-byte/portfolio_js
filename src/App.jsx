@@ -548,72 +548,11 @@ const PageFormation = () => (
 );
 
 const PageParcours = () => {
-  const [bonusOpen, setBonusOpen] = React.useState(false);
   return (
     <div className="space-y-8">
-      <div className="flex justify-between items-start">
+      <div>
         <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Mon Parcours</h2>
-        <style>{`
-    @keyframes swing {
-      0%, 100% { transform: rotate(-8deg); }
-      50% { transform: rotate(8deg); }
-    }
-  `}</style>
-        <div style={{ transformOrigin: 'top center', animation: 'swing 2s ease-in-out infinite', cursor: 'pointer', position: 'fixed', top: '80px', right: '20px', zIndex: 49 }}
-          onClick={() => setBonusOpen(true)}>
-          <div style={{ width: '2px', height: '30px', background: '#FF69B4', margin: '0 auto' }} />
-          <div className="rounded-xl px-4 py-3 shadow-lg text-center"
-            style={{ background: '#FFF9C4', border: '2px solid #FF69B4', minWidth: '80px' }}>
-            <span className="text-sm font-bold uppercase tracking-widest"
-              style={{ color: '#FF69B4', animation: 'gentlePulse 2.5s ease-in-out infinite' }}>
-              BONUS
-            </span>
-          </div>
-        </div>
       </div>
-      {bonusOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-          style={{ background: 'rgba(0,0,0,0.18)', backdropFilter: 'blur(6px)' }}
-          onClick={() => setBonusOpen(false)}>
-          <div onClick={e => e.stopPropagation()}
-            style={{
-              background: '#fffef9',
-              border: '1px solid #e8e0cc',
-              borderRadius: '4px',
-              padding: '1.5rem',
-              maxWidth: '420px',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.2), 4px 4px 0 #FF69B4',
-              position: 'relative',
-            }}>
-            {/* Fil de l'étiquette */}
-            <div style={{ width: '2px', height: '30px', background: '#FF69B4', margin: '0 auto 1rem' }} />
-            <div className="w-4 h-4 rounded-full mx-auto mb-4" style={{ background: '#FF69B4' }} />
-
-            {/* Photo style carte postale */}
-            <div style={{
-              background: 'white',
-              padding: '8px 8px 40px 8px',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-              transform: 'rotate(-2deg)',
-              marginBottom: '1.2rem',
-            }}>
-              <img src="/enfant.jpg" alt="June enfant" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
-            </div>
-
-            <p className="text-sm leading-relaxed text-center" style={{ color: '#1A202C', fontStyle: 'italic' }}>
-              Ayant grandi dans un restaurant familial pendant 10 ans, j'ai acquis les connaissances nécessaires à la restauration.
-            </p>
-            <p className="text-sm leading-relaxed text-center mt-3" style={{ color: '#1A202C', fontStyle: 'italic' }}>
-              De plus, en tant que tante de trois jeunes enfants, je peux m'occuper d'enfants de 0 à 7 ans.
-            </p>
-            <button onClick={() => setBonusOpen(false)}
-              className="mt-4 text-xs font-bold uppercase tracking-widest block mx-auto"
-              style={{ color: '#FF69B4' }}>
-              Fermer
-            </button>
-          </div>
-        </div>
-      )}
       <div className="grid gap-6">
 
         <div className="bg-white p-8 rounded-[30px] border-l-[8px]" style={{ borderColor: '#FF69B4' }}>
@@ -814,56 +753,163 @@ const PageCompetencesOverview = ({ setActivePage }) => (
   </div>
 );
 const PageProjets = ({ setActivePage }) => (
-  <div className="space-y-8">
-    <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Mes Projets</h2>
-    <style>{`
-      @keyframes scrollDiamonds {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-    `}</style>
+  <div className="space-y-12">
 
-    <div className="overflow-hidden" style={{ padding: '60px 0' }}>
-      <div className="flex gap-12 items-center" style={{ animation: 'scrollDiamonds 20s linear infinite', width: 'max-content' }}>
-        {[...Array(2)].map((_, repeat) => (
-          [
-            { id: 'sae', label: 'SAE', icon: <Presentation size={28} />, color: '#FF69B4', bg: '#FFF9C4' },
-            { id: 'stages', label: 'Stages', icon: <Building2 size={28} />, color: '#FF69B4', bg: '#FFB6C1' },
-            { id: 'projet-transverse', label: 'Projet Transverse', icon: <Target size={28} />, color: '#FF69B4', bg: '#FFF9C4' },
-            { id: 'ppp', label: 'PPP', icon: <Star size={28} />, color: '#FF69B4', bg: '#FFB6C1' },
-          ].map((projet, i) => (
-            <div
-              key={`${repeat}-${i}`}
-              onClick={() => setActivePage(projet.id)}
-              className="cursor-pointer transition-all duration-500 hover:z-10"
-              style={{
-                width: '160px',
-                height: '160px',
-                background: projet.bg,
-                transform: 'rotate(45deg)',
-                border: `3px solid ${projet.color}`,
-                boxShadow: '0 4px 20px rgba(255,105,180,0.2)',
-                flexShrink: 0,
-                position: 'relative',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'rotate(45deg) scale(1.3)'; e.currentTarget.style.zIndex = '10'; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'rotate(45deg) scale(1)'; e.currentTarget.style.zIndex = '1'; }}
-            >
-              <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%) rotate(-45deg)',
-                textAlign: 'center',
-                width: '120px',
-              }}>
-                <div style={{ color: projet.color, display: 'flex', justifyContent: 'center' }}>{projet.icon}</div>
-                <p className="text-xs font-bold mt-2" style={{ color: '#1A202C' }}>{projet.label}</p>
+    {/* Header */}
+    <div className="space-y-2">
+      <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Mes Projets</h2>
+      <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>SAE, stages, projet transverse, PPP — quatre dimensions d'un même parcours.</p>
+    </div>
+
+    {/* Cartes détaillées */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      {/* SAE */}
+      <div className="bg-white rounded-[30px] border overflow-hidden flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+        style={{ borderColor: '#FFF9C4' }}
+        onClick={() => setActivePage('sae')}
+        onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
+        onMouseLeave={e => e.currentTarget.style.borderColor = '#FFF9C4'}>
+        <div className="p-6 flex items-center gap-4" style={{ background: '#FFF9C4' }}>
+          <div className="p-3 rounded-2xl bg-white">
+            <Presentation size={28} style={{ color: '#FF69B4' }} />
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>S3 & S4</p>
+            <h3 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>SAE</h3>
+          </div>
+        </div>
+        <div className="p-6 space-y-4 flex-1 flex flex-col">
+          <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
+            Quatre situations d'apprentissage qui m'ont plongée dans des cas professionnels réels — de la création d'entreprise à la création d'un site web.
+          </p>
+          <div className="space-y-2 flex-1">
+            {[
+              { sem: 'S3', titre: 'Création d\'entreprise' },
+              { sem: 'S3', titre: 'Analyse d\'une activité digitale' },
+              { sem: 'S4', titre: 'Pilotage commercial d\'une organisation' },
+              { sem: 'S4', titre: 'Création d\'un site web' },
+            ].map((s, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <span className="text-xs font-bold px-2 py-0.5 rounded-full shrink-0" style={{ background: '#FFB6C1', color: '#1A202C' }}>{s.sem}</span>
+                <p className="text-xs" style={{ color: '#1A202C', opacity: 0.7 }}>{s.titre}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest pt-2" style={{ color: '#FF69B4' }}>
+            Découvrir <ArrowRight size={13} />
+          </div>
+        </div>
+      </div>
+
+      {/* Stages */}
+      <div className="bg-white rounded-[30px] border overflow-hidden flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+        style={{ borderColor: '#FFF9C4' }}
+        onClick={() => setActivePage('stages')}
+        onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
+        onMouseLeave={e => e.currentTarget.style.borderColor = '#FFF9C4'}>
+        <div className="p-6 flex items-center gap-4" style={{ background: '#FFB6C1' }}>
+          <div className="p-3 rounded-2xl bg-white">
+            <Building2 size={28} style={{ color: '#FF69B4' }} />
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>TC1 & TC2</p>
+            <h3 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Stages</h3>
+          </div>
+        </div>
+        <div className="p-6 space-y-4 flex-1 flex flex-col">
+          <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
+            Deux immersions professionnelles — une en vente en Normandie, une dans l'audiovisuel à l'autre bout du monde.
+          </p>
+          <div className="space-y-3 flex-1">
+            <div className="flex items-start gap-3 p-3 rounded-2xl" style={{ background: '#FFF9C4' }}>
+              <span className="text-xl">🌺</span>
+              <div>
+                <p className="text-xs font-bold" style={{ color: '#1A202C' }}>Wallis et Futuna — La 1ère</p>
+                <p className="text-xs" style={{ color: '#1A202C', opacity: 0.6 }}>TC2 · Audiovisuel · Pacifique Sud</p>
               </div>
             </div>
-          ))
-        ))}
+            <div className="flex items-start gap-3 p-3 rounded-2xl" style={{ background: '#FFF9C4' }}>
+              <span className="text-xl">🏃</span>
+              <div>
+                <p className="text-xs font-bold" style={{ color: '#1A202C' }}>Intersport — Guichainville</p>
+                <p className="text-xs" style={{ color: '#1A202C', opacity: 0.6 }}>TC1 · Vente · Relation client</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest pt-2" style={{ color: '#FF69B4' }}>
+            Découvrir <ArrowRight size={13} />
+          </div>
+        </div>
       </div>
+
+      {/* Projet Transverse */}
+      <div className="bg-white rounded-[30px] border overflow-hidden flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+        style={{ borderColor: '#FFF9C4' }}
+        onClick={() => setActivePage('projet-transverse')}
+        onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
+        onMouseLeave={e => e.currentTarget.style.borderColor = '#FFF9C4'}>
+        <div className="p-6 flex items-center gap-4" style={{ background: '#FFF9C4' }}>
+          <div className="p-3 rounded-2xl bg-white">
+            <Target size={28} style={{ color: '#FF69B4' }} />
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Jeunes Pousses · 2025–2026</p>
+            <h3 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Projet Transverse</h3>
+          </div>
+        </div>
+        <div className="p-6 space-y-4 flex-1 flex flex-col">
+          <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
+            Création de A à Z d'une entreprise fictive mais opérationnelle en équipe de 4 : <strong>Sweety Cake</strong>, un coffee shop artisanal sans sucre raffiné.
+          </p>
+          <div className="flex flex-wrap gap-2 flex-1 content-start">
+            {['SARL', 'Coffee shop', 'Sans sucre raffiné', 'Distributeurs auto.', 'Haute-Normandie', 'Production & Finitions'].map((t, i) => (
+              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{t}</span>
+            ))}
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest pt-2" style={{ color: '#FF69B4' }}>
+            Découvrir <ArrowRight size={13} />
+          </div>
+        </div>
+      </div>
+
+      {/* PPP */}
+      <div className="bg-white rounded-[30px] border overflow-hidden flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+        style={{ borderColor: '#FFF9C4' }}
+        onClick={() => setActivePage('ppp')}
+        onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
+        onMouseLeave={e => e.currentTarget.style.borderColor = '#FFF9C4'}>
+        <div className="p-6 flex items-center gap-4" style={{ background: '#FFB6C1' }}>
+          <div className="p-3 rounded-2xl bg-white">
+            <Star size={28} style={{ color: '#FF69B4' }} />
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>S3 & S4</p>
+            <h3 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>PPP</h3>
+          </div>
+        </div>
+        <div className="p-6 space-y-4 flex-1 flex flex-col">
+          <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
+            Projet Personnel et Professionnel — une réflexion sur moi-même, mes ambitions et la construction de mon avenir professionnel.
+          </p>
+          <div className="space-y-2 flex-1">
+            {[
+              { emoji: '🧠', texte: 'Profil INTJ — Architecte' },
+              { emoji: '🎯', texte: 'Ambitions : e-commerce, freelance, entrepreneuriat' },
+              { emoji: '📄', texte: 'Dossiers PPP S3 & S4' },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <span>{item.emoji}</span>
+                <p className="text-xs" style={{ color: '#1A202C', opacity: 0.7 }}>{item.texte}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest pt-2" style={{ color: '#FF69B4' }}>
+            Découvrir <ArrowRight size={13} />
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 );
@@ -968,6 +1014,430 @@ const PagePPP = () => (
     </div>
   </div>
 );
+const PageProjetTransverse = () => (
+  <div className="space-y-12">
+
+    {/* Header */}
+    <div className="space-y-2">
+      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Jeunes Pousses · 2025–2026</p>
+      <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Sweety Cake</h2>
+      <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>Coffee shop artisanal sans sucre raffiné — de l'idée à l'entreprise, en équipe.</p>
+    </div>
+
+    {/* Hero card */}
+    <div className="relative rounded-[40px] overflow-hidden p-10 flex flex-col md:flex-row gap-8 items-center" style={{ background: 'linear-gradient(135deg, #FFB6C1 0%, #FFF9C4 100%)' }}>
+      <div className="text-center shrink-0" style={{ fontSize: '6rem', lineHeight: 1 }}>🍰</div>
+      <div className="space-y-4 flex-1">
+        <h3 className="text-3xl font-serif italic font-bold" style={{ color: '#1A202C' }}>Un coffee shop gourmand et responsable</h3>
+        <p className="text-base leading-relaxed" style={{ color: '#1A202C', opacity: 0.8 }}>
+          Sweety Cake, c'est un coffee shop artisanal spécialisé dans les gâteaux et boissons <strong>sans sucre raffiné et/ou sans gluten</strong>,
+          préparés maison à partir de recettes développées par l'équipe. Le tout complété par une distribution
+          en <strong>distributeurs automatiques</strong> dans les lieux de passage de Haute-Normandie.
+        </p>
+        <div className="flex flex-wrap gap-3 pt-2">
+          {['Entrepreneuriat', 'SARL', 'Healthy food', 'Artisanal', 'Haute-Normandie'].map((tag, i) => (
+            <span key={i} className="px-4 py-1 rounded-full text-xs font-bold" style={{ background: 'white', color: '#FF69B4', border: '1px solid #FF69B4' }}>{tag}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* Notre concept */}
+    <div className="space-y-4">
+      <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Notre concept</h3>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { emoji: '🌿', titre: 'L\'offre', desc: 'Gâteaux faits maison sans sucre raffiné, adaptés aux personnes diabétiques, intolérantes au gluten ou simplement soucieuses de leur santé — sans sacrifier le plaisir.' },
+          { emoji: '📍', titre: 'La distribution', desc: 'Deux canaux complémentaires : un coffee shop physique pour une pause sur place, et des distributeurs automatiques dans universités, hôpitaux et zones urbaines.' },
+          { emoji: '♻️', titre: 'La responsabilité', desc: 'Ingrédients locaux, emballages recyclables ou biodégradables, vaisselle réutilisable sur place et gestion rigoureuse des stocks pour limiter le gaspillage.' },
+        ].map((item, i) => (
+          <div key={i} className="bg-white rounded-[24px] p-6 border space-y-3" style={{ borderColor: '#FFF9C4' }}>
+            <div className="text-3xl">{item.emoji}</div>
+            <h4 className="font-bold text-sm" style={{ color: '#FF69B4' }}>{item.titre}</h4>
+            <p className="text-xs leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Mood board */}
+    <div className="space-y-4">
+      <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Notre univers visuel</h3>
+      <div className="rounded-[30px] overflow-hidden border-4" style={{ borderColor: '#FFB6C1' }}>
+        <img src="/preuves/projet-transverse/mood-board.png" alt="Mood board Sweety Cake" style={{ width: '100%', objectFit: 'cover' }} />
+      </div>
+    </div>
+
+    {/* L'équipe */}
+    <div className="space-y-4">
+      <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ L'équipe fondatrice</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { initiale: 'D', nom: 'Douaa Chihhane', role: 'Communication & Branding', desc: 'Sublime le projet grâce à une communication claire, esthétique et cohérente.' },
+          { initiale: 'E', nom: 'Elly Larue', role: 'Logistique & Organisation', desc: 'Veille à ce que tout soit prêt en temps voulu — le projet reste structuré et fluide.' },
+          { initiale: 'L', nom: 'Lalia Soumaré', role: 'Développement des recettes', desc: 'Crée des recettes healthy mais délicieuses, garante de l\'identité gustative du projet.' },
+          { initiale: 'J', nom: 'June Spotbeen', role: 'Production & Finitions', desc: 'Garantit la qualité visuelle et technique des gâteaux pour un rendu professionnel et séduisant.', isMe: true },
+        ].map((m, i) => (
+          <div key={i} className="bg-white rounded-[24px] p-5 border flex items-start gap-4" style={{ borderColor: m.isMe ? '#FF69B4' : '#FFF9C4', borderWidth: m.isMe ? 2 : 1 }}>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold text-white text-sm" style={{ background: '#FF69B4' }}>{m.initiale}</div>
+            <div className="space-y-1">
+              <p className="font-bold text-sm" style={{ color: '#1A202C' }}>{m.nom}{m.isMe && <span className="ml-2 text-xs font-normal italic" style={{ color: '#FF69B4' }}>— moi</span>}</p>
+              <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>{m.role}</p>
+              <p className="text-xs leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>{m.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Mon rôle */}
+    <div className="space-y-4">
+      <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Mon rôle en détail</h3>
+      <div className="rounded-[30px] p-8 space-y-4" style={{ background: '#FFF9C4' }}>
+        <div className="flex items-start gap-4">
+          <div className="text-4xl">🎨</div>
+          <div className="space-y-3">
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Production & Finitions</p>
+            <p className="text-base leading-relaxed" style={{ color: '#1A202C', opacity: 0.85 }}>
+              Au sein de l'équipe, j'étais garante de la qualité visuelle et technique des gâteaux.
+              Minutieuse et patiente, je supervisais les décors et les finitions pour assurer un rendu
+              professionnel et séduisant — essentiel pour une cible connectée et très attachée au visuel.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-1">
+              {['Précision', 'Minutie', 'Maîtrise technique', 'Sens du détail', 'Patience'].map((f, i) => (
+                <span key={i} className="px-3 py-1 rounded-full text-xs font-semibold" style={{ background: 'white', color: '#FF69B4', border: '1px solid #FFB6C1' }}>{f}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Étapes du projet */}
+    <div className="space-y-6">
+      <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Les étapes du projet</h3>
+      <div className="space-y-4">
+        {[
+          {
+            num: '01', titre: 'Formaliser le projet', sous: 'Problème · Solution',
+            desc: 'Nous avons identifié deux besoins : les personnes souhaitant manger gourmand sans excès de sucre, et celles ayant des régimes spécifiques (diabète, intolérance au gluten). Notre étude qualitative auprès de 10 personnes a confirmé l\'appétit pour des snacks sains et pratiques — 8/10 seraient favorables à des distributeurs automatiques de pâtisseries healthys.',
+          },
+          {
+            num: '02', titre: 'Proposition de valeur', sous: 'Concurrents · Offre commerciale',
+            desc: 'Après analyse des acteurs industriels (LU, Gerblé, Bjorg, Karéléa…), nous avons défini notre différence : des produits artisanaux, faits maison, sans sucre raffiné, accessibles à tous. Notre double distribution (coffee shop + distributeurs) nous permet de toucher un large public tout en ancrant notre présence en Haute-Normandie.',
+          },
+          {
+            num: '03', titre: 'Étude de marché', sous: 'Analyse PESTEL · Segmentation',
+            desc: 'Le marché du "manger mieux" est en plein essor. Notre PESTEL révèle des opportunités claires (taxe sucre, tendance healthy, essor du libre-service) et des défis à anticiper (perception prix, dépendance aux distributeurs, normes hygiène). Notre cible prioritaire : étudiants et jeunes actifs de Haute-Normandie.',
+          },
+          {
+            num: '04', titre: 'Statut juridique', sous: 'SARL',
+            desc: 'Nous avons opté pour la SARL, statut adapté à un groupe de 4 associées. Il offre une répartition claire des rôles, une prise de décision structurée et une image solide auprès des partenaires financiers — indispensable pour un projet dans la restauration.',
+          },
+          {
+            num: '05', titre: 'Financement', sous: 'Budget · Prévisions sur 3 ans',
+            desc: 'Budget de fonctionnement estimé à 12 990 €/mois (charges fixes + variables). Chiffre d\'affaires prévisionnel : 22 700 €/mois, soit un bénéfice potentiel de ~6 700 €/mois (29% du CA). Seuil de rentabilité : 10 057 €/mois. Montage financier : apport personnel (10 000 €) + subvention régionale + prêt bancaire.',
+          },
+          {
+            num: '06', titre: 'Gouvernance & Partenariats', sous: 'Organisation · Parties prenantes',
+            desc: 'L\'entreprise est pilotée par les 4 fondatrices avec des rôles complémentaires et définis. Parties prenantes clés : producteurs locaux pour garantir la fraîcheur, organisateurs d\'événements pour des prestations externes, plateformes de livraison à l\'avenir, et expert-comptable.',
+          },
+          {
+            num: '07', titre: 'Marketing & Communication', sous: 'Personas · Canaux',
+            desc: 'Persona cible : personne soucieuse de sa santé, aimant se faire plaisir, attachée aux valeurs naturelles. Canaux activés : réseaux sociaux (posts, reels, jeux concours), flyers dans salles de sport / universités / primeurs, communication OOH (mobilier urbain à Évreux), dégustations en coffee shop.',
+          },
+        ].map((etape, i) => (
+          <div key={i} className="bg-white rounded-[24px] p-6 border flex gap-5 items-start" style={{ borderColor: '#FFF9C4' }}>
+            <div className="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-sm" style={{ background: '#FFF9C4', color: '#FF69B4' }}>{etape.num}</div>
+            <div className="space-y-1 flex-1">
+              <div className="flex flex-wrap items-baseline gap-2">
+                <h4 className="font-bold" style={{ color: '#1A202C' }}>{etape.titre}</h4>
+                <span className="text-xs italic" style={{ color: '#FF69B4' }}>{etape.sous}</span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.75 }}>{etape.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Dossier complet */}
+    <div className="space-y-4">
+      <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Dossier complet</h3>
+      <a href="/preuves/projet-transverse/dossier-sweety-cake.pdf" target="_blank" rel="noopener noreferrer"
+        className="bg-white rounded-[30px] p-8 border transition-all hover:shadow-xl hover:-translate-y-1 space-y-4 flex items-center gap-6"
+        style={{ borderColor: '#FFF9C4', textDecoration: 'none' }}
+        onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
+        onMouseLeave={e => e.currentTarget.style.borderColor = '#FFF9C4'}>
+        <div className="p-4 rounded-2xl shrink-0" style={{ background: '#FFF9C4' }}>
+          <FileText size={32} style={{ color: '#FF69B4' }} />
+        </div>
+        <div className="space-y-1 flex-1">
+          <h4 className="text-lg font-bold" style={{ color: '#1A202C' }}>Rapport Sweety Cake — Jeunes Pousses 2025–2026</h4>
+          <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>Problème · Marché · Juridique · Finance · Gouvernance · Marketing</p>
+        </div>
+        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest shrink-0" style={{ color: '#FF69B4' }}>
+          Consulter <ArrowRight size={14} />
+        </div>
+      </a>
+    </div>
+
+  </div>
+);
+
+const PageStages = () => (
+  <div className="space-y-12">
+
+    {/* Header */}
+    <div className="space-y-2">
+      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>BUT TC · Terrain & Expérience</p>
+      <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Mes Stages</h2>
+      <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>Des immersions professionnelles pour mettre en pratique, observer et grandir.</p>
+    </div>
+
+    {/* Stage principal — Wallis et Futuna */}
+    <div className="space-y-6">
+      <div className="flex items-center gap-4">
+        <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Stage de 2ème année</h3>
+        <div className="flex-1 h-px" style={{ background: '#FFB6C1' }} />
+      </div>
+
+      {/* Hero stage */}
+      <div className="rounded-[40px] overflow-hidden border-2" style={{ borderColor: '#FFB6C1' }}>
+
+        {/* Bandeau */}
+        <div className="p-8 flex flex-col md:flex-row gap-6 items-center" style={{ background: 'linear-gradient(135deg, #FFB6C1 0%, #FFF9C4 100%)' }}>
+          <div className="shrink-0 text-center" style={{ fontSize: '5rem', lineHeight: 1 }}>🌺</div>
+          <div className="space-y-3 flex-1">
+            <div className="flex flex-wrap items-center gap-3">
+              <h4 className="text-3xl font-serif italic font-bold" style={{ color: '#1A202C' }}>Wallis et Futuna — La 1ère</h4>
+              <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: 'white', color: '#FF69B4' }}>2025 · TC2</span>
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.75 }}>
+              Stage effectué au sein de <strong>La 1ère</strong>, la chaîne de France Télévisions présente dans les territoires
+              d'outre-mer, à Wallis-et-Futuna — un territoire unique situé dans le Pacifique Sud.
+            </p>
+            <div className="flex flex-wrap gap-2 pt-1">
+              {['Audiovisuel', 'Outre-mer', 'France Télévisions', 'Pacifique Sud'].map((t, i) => (
+                <span key={i} className="text-xs px-3 py-1 rounded-full font-semibold" style={{ background: 'white', color: '#1A202C' }}>{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Contenu */}
+        <div className="bg-white p-8 space-y-8">
+
+          {/* Contexte */}
+          <div className="space-y-3">
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Contexte</p>
+            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
+              <em>À compléter — présentation de La 1ère Wallis-et-Futuna, contexte du stage, durée...</em>
+            </p>
+          </div>
+
+          {/* Missions */}
+          <div className="space-y-3">
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Mes missions</p>
+            <div className="space-y-2">
+              {['Mission 1 — à compléter', 'Mission 2 — à compléter', 'Mission 3 — à compléter'].map((m, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="mt-1 w-2 h-2 rounded-full shrink-0" style={{ background: '#FF69B4' }} />
+                  <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.5 }}>{m}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Compétences */}
+          <div className="space-y-3">
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Compétences mobilisées</p>
+            <div className="flex flex-wrap gap-2">
+              {['À compléter', 'À compléter', 'À compléter'].map((c, i) => (
+                <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#1A202C', opacity: 0.5 }}>{c}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Ce que j'en retiens */}
+          <div className="rounded-[20px] p-6 space-y-2" style={{ background: '#FFF9C4' }}>
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Ce que j'en retiens</p>
+            <p className="text-sm leading-relaxed italic" style={{ color: '#1A202C', opacity: 0.6 }}>
+              À compléter — bilan personnel, apprentissages, ce que ce stage t'a apporté.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    {/* Transition — Stage N1 Intersport */}
+    <div className="space-y-5">
+      <div className="flex items-center gap-4">
+        <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Stage de 1ère année</h3>
+        <div className="flex-1 h-px" style={{ background: '#FFB6C1' }} />
+      </div>
+
+      <div className="bg-white rounded-[30px] p-8 border flex flex-col md:flex-row gap-6 items-center"
+        style={{ borderColor: '#FFF9C4' }}>
+        <div className="shrink-0 text-center" style={{ fontSize: '4rem', lineHeight: 1 }}>🏃</div>
+        <div className="flex-1 space-y-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <h4 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Intersport — Guichainville</h4>
+            <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#FF69B4' }}>2024 · TC1</span>
+          </div>
+          <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
+            Stage de première année effectué en <strong>vente</strong> au sein du magasin Intersport de Guichainville.
+            Une première immersion dans le développement commercial et la relation client en point de vente.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {['Vente', 'Relation client', 'Commerce'].map((t, i) => (
+              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{t}</span>
+            ))}
+          </div>
+        </div>
+        <a href="/preuves/stages/diapo-intersport.pdf" target="_blank" rel="noopener noreferrer"
+          className="shrink-0 flex items-center gap-2 px-6 py-3 rounded-full border font-bold text-sm transition-all hover:shadow-md"
+          style={{ borderColor: '#FF69B4', color: '#FF69B4', textDecoration: 'none' }}
+          onMouseEnter={e => { e.currentTarget.style.background = '#FF69B4'; e.currentTarget.style.color = 'white'; }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#FF69B4'; }}>
+          <FileText size={16} /> Voir la diapo
+        </a>
+      </div>
+    </div>
+
+  </div>
+);
+
+const PageSAE = () => (
+  <div className="space-y-12">
+
+    {/* Header */}
+    <div className="space-y-2">
+      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>BUT TC · Semestres 3 & 4</p>
+      <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Mes SAE</h2>
+      <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>Situations d'Apprentissage et d'Évaluation — des projets concrets pour ancrer les compétences.</p>
+    </div>
+
+    {/* Intro */}
+    <div className="bg-white rounded-[30px] p-8 border" style={{ borderColor: '#FFF9C4' }}>
+      <p className="text-base leading-relaxed" style={{ color: '#1A202C', opacity: 0.8 }}>
+        Les SAE sont au cœur du BUT TC : elles nous plongent dans des situations professionnelles réelles où l'on doit
+        mobiliser toutes nos compétences — marketing, commercial, communication, digital — pour répondre à une problématique concrète.
+        En deux ans, j'ai mené <strong>quatre SAE</strong> qui m'ont permis de progresser à la fois
+        sur le fond et sur la forme.
+      </p>
+    </div>
+
+    {/* Semestre 3 */}
+    <div className="space-y-5">
+      <div className="flex items-center gap-4">
+        <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Semestre 3</h3>
+        <div className="flex-1 h-px" style={{ background: '#FFB6C1' }} />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        {/* SAE S3 - 1 */}
+        <div className="bg-white rounded-[30px] p-8 border space-y-5" style={{ borderColor: '#FFF9C4' }}>
+          <div className="flex items-start justify-between gap-3">
+            <div className="p-4 rounded-2xl" style={{ background: '#FFF9C4' }}>
+              <span style={{ fontSize: '2rem' }}>💡</span>
+            </div>
+            <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#FF69B4' }}>S3</span>
+          </div>
+          <div className="space-y-2">
+            <h4 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Création d'entreprise</h4>
+            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.65 }}>
+              Concevoir et formaliser un projet entrepreneurial de A à Z — étude de marché, modèle économique, stratégie et pitch.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {['Entrepreneuriat', 'Étude de marché', 'Business plan'].map((t, i) => (
+              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{t}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* SAE S3 - 2 */}
+        <div className="bg-white rounded-[30px] p-8 border space-y-5" style={{ borderColor: '#FFF9C4' }}>
+          <div className="flex items-start justify-between gap-3">
+            <div className="p-4 rounded-2xl" style={{ background: '#FFF9C4' }}>
+              <span style={{ fontSize: '2rem' }}>📊</span>
+            </div>
+            <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#FF69B4' }}>S3</span>
+          </div>
+          <div className="space-y-2">
+            <h4 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Analyse d'une activité digitale</h4>
+            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.65 }}>
+              Auditer la présence digitale d'une organisation, identifier ses forces et ses axes d'amélioration sur les canaux numériques.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {['Marketing digital', 'Audit', 'Réseaux sociaux'].map((t, i) => (
+              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{t}</span>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {/* Semestre 4 */}
+    <div className="space-y-5">
+      <div className="flex items-center gap-4">
+        <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Semestre 4</h3>
+        <div className="flex-1 h-px" style={{ background: '#FFB6C1' }} />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        {/* SAE S4 - 1 */}
+        <div className="bg-white rounded-[30px] p-8 border space-y-5" style={{ borderColor: '#FFF9C4' }}>
+          <div className="flex items-start justify-between gap-3">
+            <div className="p-4 rounded-2xl" style={{ background: '#FFF9C4' }}>
+              <span style={{ fontSize: '2rem' }}>📈</span>
+            </div>
+            <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#FF69B4' }}>S4</span>
+          </div>
+          <div className="space-y-2">
+            <h4 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Pilotage commercial d'une organisation</h4>
+            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.65 }}>
+              Analyser et piloter la performance commerciale d'une structure — objectifs, indicateurs, plan d'action et recommandations stratégiques.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {['Stratégie commerciale', 'KPIs', 'Analyse'].map((t, i) => (
+              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{t}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* SAE S4 - 2 */}
+        <div className="bg-white rounded-[30px] p-8 border space-y-5" style={{ borderColor: '#FFF9C4' }}>
+          <div className="flex items-start justify-between gap-3">
+            <div className="p-4 rounded-2xl" style={{ background: '#FFF9C4' }}>
+              <span style={{ fontSize: '2rem' }}>💻</span>
+            </div>
+            <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#FF69B4' }}>S4</span>
+          </div>
+          <div className="space-y-2">
+            <h4 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Création d'un site web</h4>
+            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.65 }}>
+              Concevoir et développer un site web fonctionnel — de la définition du besoin à la mise en ligne, en passant par le design et le contenu.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {['Web', 'Design', 'Contenu'].map((t, i) => (
+              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{t}</span>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+);
+
 const PagePlaceholder = ({ title }) => (
   <div className="space-y-8">
     <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>{title}</h2>
@@ -1147,6 +1617,9 @@ const renderPage = (page, deps) => {
     'ppp': 'PPP (Projet Personnel et Professionnel)',
   };
   if (page === 'ppp') return <PagePPP />;
+  if (page === 'projet-transverse') return <PageProjetTransverse />;
+  if (page === 'sae') return <PageSAE />;
+  if (page === 'stages') return <PageStages />;
   if (projectTitles[page]) return <PagePlaceholder title={projectTitles[page]} />;
   return null;
 };
@@ -1197,6 +1670,7 @@ const App = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activePage, setActivePage] = useState('accueil');
   const [selectedSkill, setSelectedSkill] = useState(null);
+  const [bonusOpen, setBonusOpen] = useState(false);
   const scrollContainerRef = useRef(null);
 
   const navigate = (item) => {
@@ -1210,6 +1684,7 @@ const App = () => {
     setIsMobileMenuOpen(false);
   };
   React.useEffect(() => {
+    setBonusOpen(false);
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1259,8 +1734,40 @@ const App = () => {
       )}
       <ModalSkill skill={selectedSkill} onClose={() => setSelectedSkill(null)} />
 
+      <style>{`
+        @keyframes swing {
+          0%, 100% { transform: rotate(-8deg); }
+          50% { transform: rotate(8deg); }
+        }
+      `}</style>
+
+      {/* Modal bonus */}
+      {bonusOpen && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+          style={{ background: 'rgba(0,0,0,0.18)', backdropFilter: 'blur(6px)' }}
+          onClick={() => setBonusOpen(false)}>
+          <div onClick={e => e.stopPropagation()}
+            style={{ background: '#fffef9', border: '1px solid #e8e0cc', borderRadius: '4px', padding: '1.5rem', maxWidth: '420px', boxShadow: '0 8px 32px rgba(0,0,0,0.2), 4px 4px 0 #FF69B4' }}>
+            <div style={{ width: '2px', height: '30px', background: '#FF69B4', margin: '0 auto 1rem' }} />
+            <div className="w-4 h-4 rounded-full mx-auto mb-4" style={{ background: '#FF69B4' }} />
+            <div style={{ background: 'white', padding: '8px 8px 40px 8px', boxShadow: '0 2px 8px rgba(0,0,0,0.15)', transform: 'rotate(-2deg)', marginBottom: '1.2rem' }}>
+              <img src="/enfant.jpg" alt="June enfant" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+            </div>
+            <p className="text-sm leading-relaxed text-center" style={{ color: '#1A202C', fontStyle: 'italic' }}>
+              Ayant grandi dans un restaurant familial pendant 10 ans, j'ai acquis les connaissances nécessaires à la restauration.
+            </p>
+            <p className="text-sm leading-relaxed text-center mt-3" style={{ color: '#1A202C', fontStyle: 'italic' }}>
+              De plus, en tant que tante de trois jeunes enfants, je peux m'occuper d'enfants de 0 à 7 ans.
+            </p>
+            <button onClick={() => setBonusOpen(false)} className="mt-4 text-xs font-bold uppercase tracking-widest block mx-auto" style={{ color: '#FF69B4' }}>
+              Fermer
+            </button>
+          </div>
+        </div>
+      )}
+
       <header className="sticky top-0 z-50 border-b"
-        style={{ background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(12px)', borderColor: '#FFF9C4' }}>
+        style={{ background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(12px)', borderColor: '#FFF9C4', overflow: 'visible' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <button className="flex-shrink-0" onClick={() => { setActivePage('accueil'); setActiveDropdown(null); }}>
@@ -1338,6 +1845,20 @@ const App = () => {
                 )}
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Étiquette BONUS — accrochée sous le header quand on est sur Mon Parcours */}
+        {activePage === 'parcours' && (
+          <div style={{ position: 'absolute', top: '100%', right: '20px', zIndex: 49, cursor: 'pointer' }}
+            onClick={() => setBonusOpen(true)}>
+            <div style={{ transformOrigin: 'top center', animation: 'swing 2s ease-in-out infinite' }}>
+              <div style={{ width: '2px', height: '30px', background: '#FF69B4', margin: '0 auto' }} />
+              <div className="rounded-xl px-4 py-3 shadow-lg text-center"
+                style={{ background: '#FFF9C4', border: '2px solid #FF69B4', minWidth: '80px' }}>
+                <span className="text-sm font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>BONUS</span>
+              </div>
+            </div>
           </div>
         )}
       </header>
