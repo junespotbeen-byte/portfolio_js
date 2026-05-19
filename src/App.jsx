@@ -867,6 +867,107 @@ const PageProjets = ({ setActivePage }) => (
     </div>
   </div>
 );
+const PagePPP = () => (
+  <div className="space-y-12">
+    <div className="space-y-2">
+      <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Mon PPP</h2>
+      <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>Projet Personnel et Professionnel — de la connaissance de soi à la construction de mon avenir.</p>
+    </div>
+
+    {/* Intro */}
+    <div className="bg-white rounded-[30px] p-8 border" style={{ borderColor: '#FFF9C4' }}>
+      <p className="text-base leading-relaxed" style={{ color: '#1A202C', opacity: 0.8 }}>
+        Depuis plusieurs années, j'ai une conviction : je veux travailler pour moi, à ma façon. J'ai besoin d'autonomie, de liberté et de pouvoir changer de voie à tout moment. Mon BUT TC m'a permis d'explorer sans me spécialiser — vente, communication digitale, marketing, entrepreneuriat — pour construire tous les bagages dont j'aurai besoin.
+      </p>
+      <p className="text-base leading-relaxed mt-4" style={{ color: '#1A202C', opacity: 0.8 }}>
+        À court terme : terminer mon BUT en développant des expériences variées. À moyen terme : me lancer dans l'auto-entrepreneuriat ou la gestion d'un projet e-commerce.
+      </p>
+    </div>
+
+    {/* Personnalité */}
+    <div className="space-y-4">
+      <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Ma personnalité</h3>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { emoji: '🧠', titre: 'INTJ — Architecte', desc: 'Penseuse imaginative et stratégique, avec un plan pour tout. 79% introvertie, organisée, analytique.' },
+          { emoji: '💡', titre: 'Points forts', desc: 'Esprit innovant · Travailleuse autonome · Pensée conceptuelle · Jugement objectif · Performances fiables' },
+          { emoji: '🎯', titre: 'En développement', desc: 'Leadership · Networking · Délégation · Aisance à l\'oral · Prise de décision rapide' },
+        ].map((item, i) => (
+          <div key={i} className="bg-white rounded-[24px] p-6 border space-y-3" style={{ borderColor: '#FFF9C4' }}>
+            <div className="text-3xl">{item.emoji}</div>
+            <h4 className="font-bold text-sm" style={{ color: '#FF69B4' }}>{item.titre}</h4>
+            <p className="text-xs leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Ambitions */}
+    <div className="space-y-4">
+      <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Mes ambitions professionnelles</h3>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { titre: 'E-commerce', desc: 'Gérer un site e-commerce en auto-entreprise dans un domaine qui me passionne.' },
+          { titre: 'Consultante digitale', desc: 'Accompagner des entreprises en stratégie digitale, idéalement en freelance.' },
+          { titre: 'Entrepreneuriat', desc: 'Être gérante d\'entreprise — peu importe le type, l\'indépendance prime.' },
+        ].map((item, i) => (
+          <div key={i} className="rounded-[24px] p-6 space-y-2" style={{ background: '#FFF9C4' }}>
+            <h4 className="font-bold" style={{ color: '#1A202C' }}>{item.titre}</h4>
+            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Vision Board */}
+    <div className="space-y-4">
+      <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Mon Vision Board 2026</h3>
+      <div className="rounded-[30px] overflow-hidden shadow-xl border-4" style={{ borderColor: '#FFB6C1' }}>
+        <img src="/preuves/ppp/vision-board.png" alt="Vision Board 2026" style={{ width: '100%', objectFit: 'cover' }} />
+      </div>
+    </div>
+
+    {/* Dossiers */}
+    <div className="space-y-4">
+      <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Mes dossiers PPP</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <a href="/preuves/ppp/dossier-ppps3.pdf" target="_blank" rel="noopener noreferrer"
+          className="bg-white rounded-[30px] p-8 border transition-all hover:shadow-xl hover:-translate-y-1 space-y-4 block"
+          style={{ borderColor: '#FFF9C4', textDecoration: 'none' }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
+          onMouseLeave={e => e.currentTarget.style.borderColor = '#FFF9C4'}>
+          <div className="p-4 rounded-2xl inline-block" style={{ background: '#FFF9C4' }}>
+            <FileText size={32} style={{ color: '#FF69B4' }} />
+          </div>
+          <div className="space-y-2">
+            <h4 className="text-xl font-bold" style={{ color: '#1A202C' }}>Dossier PPP — Semestre 3</h4>
+            <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>Introspection · Test de personnalité · Bilan de compétences · Métiers envisagés</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>
+            Consulter le dossier <ArrowRight size={14} />
+          </div>
+        </a>
+
+        <a href="/preuves/ppp/dossier-ppps4.pdf" target="_blank" rel="noopener noreferrer"
+          className="bg-white rounded-[30px] p-8 border transition-all hover:shadow-xl hover:-translate-y-1 space-y-4 block"
+          style={{ borderColor: '#FFF9C4', textDecoration: 'none' }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
+          onMouseLeave={e => e.currentTarget.style.borderColor = '#FFF9C4'}>
+          <div className="p-4 rounded-2xl inline-block" style={{ background: '#FFF9C4' }}>
+            <FileText size={32} style={{ color: '#FF69B4' }} />
+          </div>
+          <div className="space-y-2">
+            <h4 className="text-xl font-bold" style={{ color: '#1A202C' }}>Dossier PPP — Semestre 4</h4>
+            <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>Recherche d'alternance · Analyse d'offres · Construction du projet professionnel</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>
+            Consulter le dossier <ArrowRight size={14} />
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+);
 const PagePlaceholder = ({ title }) => (
   <div className="space-y-8">
     <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>{title}</h2>
@@ -1045,6 +1146,7 @@ const renderPage = (page, deps) => {
     'projet-transverse': 'Projet Transverse',
     'ppp': 'PPP (Projet Personnel et Professionnel)',
   };
+  if (page === 'ppp') return <PagePPP />;
   if (projectTitles[page]) return <PagePlaceholder title={projectTitles[page]} />;
   return null;
 };
