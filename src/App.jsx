@@ -201,31 +201,51 @@ const ModalSkill = ({ skill, onClose }) => {
       { titre: "Matrice BCG", legende: "Exercice d'analyse de portefeuille via la matrice BCG", fichier: "/preuves/ac21.04/matrice-bcg.pdf" },
     ],
   };
+  const getSkillStatus = () => {
+    for (const comp of Object.values(COMPETENCES)) {
+      const ac = comp.acs.find(a => a.text === skill);
+      if (ac) return ac.status;
+    }
+    return null;
+  };
+  const status = getSkillStatus();
   const handleClose = () => { setView('info'); onClose(); };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       style={{ background: 'rgba(0,0,0,0.18)', backdropFilter: 'blur(6px)' }}>
-      <div className="bg-white w-full max-w-lg rounded-[40px] shadow-2xl overflow-hidden border"
-        style={{ borderColor: '#FFF9C4', animation: 'scaleIn .25s ease' }}>
-        <div className="p-8 space-y-6">
-          <div className="flex justify-between items-start">
-            <div className="p-3 rounded-2xl" style={{ background: '#FFF9C4', color: '#FF69B4' }}>
-              {view === 'info' ? <Info size={24} /> : <ImageIcon size={24} />}
-            </div>
-            <button onClick={handleClose} className="p-2 rounded-full transition-colors hover:bg-gray-100">
-              <X size={20} />
-            </button>
+      <div className="bg-white w-full max-w-lg rounded-[40px] shadow-2xl border flex flex-col"
+        style={{ borderColor: '#FFF9C4', animation: 'scaleIn .25s ease', maxHeight: '75vh', display: 'flex', flexDirection: 'column' }}>
+
+        {/* Header fixe */}
+        <div className="p-8 pb-4 flex justify-between items-start flex-shrink-0">
+          <div className="p-3 rounded-2xl" style={{ background: '#FFF9C4', color: '#FF69B4' }}>
+            {view === 'info' ? <Info size={24} /> : <ImageIcon size={24} />}
           </div>
+          <button onClick={handleClose} className="p-2 rounded-full transition-colors hover:bg-gray-100">
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Contenu scrollable */}
+        <div className="flex-1 overflow-y-auto px-8 pb-8">
           {view === 'info' ? (
             <div className="space-y-6">
               <div className="space-y-3">
-                <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>
-                  Details de l'apprentissage
-                </span>
-                <h3 className="text-2xl font-serif font-bold leading-snug" style={{ color: '#1A202C' }}>{skill}</h3>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>
+                    Détails de l'apprentissage
+                  </span>
+                  {status && (
+                    <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full"
+                      style={{ color: 'white', background: status === 'acquis' ? '#FF69B4' : status === 'en-cours' ? '#ffdb63ff' : '#9CA3AF' }}>
+                      {status === 'acquis' ? 'Acquis' : status === 'en-cours' ? 'En cours' : 'Non acquis'}
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-xl font-serif font-bold leading-snug" style={{ color: '#1A202C' }}>{skill}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.65 }}>
-                  {AC_EXPLANATIONS[skill] || "Cette compétence a été acquise et validée à travers des travaux dirigés, des projets concrets (SAE) et des mises en situation professionnelle durant mon BUT Techniques de Commercialisation."}
+                  {AC_EXPLANATIONS[skill]}
                 </p>
               </div>
               <button onClick={() => setView('realisations')}
@@ -400,7 +420,7 @@ const PageAccueil = ({ setActivePage, scrollContainerRef, scrollGallery, setSele
           { src: '/une.png', desc: 'Description à compléter' },
           { src: '/deux.png', desc: 'Description à compléter' },
           { src: '/trois.png', desc: 'Description à compléter' },
-          null, null, null, null, null
+          null,
         ].map((item, i) => (
           <div key={i} className="flex-none w-[320px] aspect-video rounded-2xl overflow-hidden relative shadow-sm border border-white snap-start cursor-pointer group transition-all duration-500"
             style={{ background: '#FFF9C4' }}
@@ -857,7 +877,7 @@ const PagePlaceholder = ({ title }) => (
     </div>
   </div>
 );
-const PageMentionsLegales = () => (
+const PageMentionsLegales = ({ setActivePage }) => (
   <div className="max-w-2xl mx-auto space-y-8">
     <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>
       Mentions légales
@@ -879,11 +899,18 @@ const PageMentionsLegales = () => (
         <h3 className="text-lg font-bold" style={{ color: '#1A202C' }}>Propriété intellectuelle</h3>
         <p className="text-sm" style={{ color: '#1A202C', opacity: 0.7 }}>L'ensemble du contenu de ce site (textes, images, visuels) est la propriété exclusive de June Spotbeen. Toute reproduction sans autorisation est interdite.</p>
       </div>
+      <div className="flex justify-center pt-4">
+        <button onClick={() => setActivePage('accueil')}
+          className="flex items-center gap-2 px-6 py-3 rounded-full border font-medium text-sm transition-all hover:shadow-md"
+          style={{ borderColor: '#FF69B4', color: '#FF69B4' }}>
+          <ArrowLeft size={16} /> Retour
+        </button>
+      </div>
     </div>
   </div>
 );
 
-const PageRGPD = () => (
+const PageRGPD = ({ setActivePage }) => (
   <div className="max-w-2xl mx-auto space-y-8">
     <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>
       Politique RGPD
@@ -904,6 +931,13 @@ const PageRGPD = () => (
       <div className="space-y-2">
         <h3 className="text-lg font-bold" style={{ color: '#1A202C' }}>Cookies</h3>
         <p className="text-sm" style={{ color: '#1A202C', opacity: 0.7 }}>Ce site n'utilise aucun cookie de traçage ou publicitaire.</p>
+      </div>
+      <div className="flex justify-center pt-4">
+        <button onClick={() => setActivePage('accueil')}
+          className="flex items-center gap-2 px-6 py-3 rounded-full border font-medium text-sm transition-all hover:shadow-md"
+          style={{ borderColor: '#FF69B4', color: '#FF69B4' }}>
+          <ArrowLeft size={16} /> Retour
+        </button>
       </div>
     </div>
   </div>
@@ -995,8 +1029,8 @@ const renderPage = (page, deps) => {
   if (page === 'formation') return <PageFormation />;
   if (page === 'parcours') return <PageParcours />;
   if (page === 'contact') return <PageContact />;
-  if (page === 'mentions-legales') return <PageMentionsLegales />;
-  if (page === 'rgpd') return <PageRGPD />;
+  if (page === 'mentions-legales') return <PageMentionsLegales setActivePage={setActivePage} />;
+  if (page === 'rgpd') return <PageRGPD setActivePage={setActivePage} />;
   if (COMPETENCES[page]) {
     const pages = ['marketing', 'vente', 'communication', 'mkt-digital', 'ebusiness'];
     const currentIndex = pages.indexOf(page);
