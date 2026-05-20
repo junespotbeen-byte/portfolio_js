@@ -146,7 +146,10 @@ const ModalSkill = ({ skill, onClose }) => {
   );
   if (skill === 'GALLERY_0') return <GalleryModal src="/une.png" desc="Description à compléter" onClose={onClose} />;
   if (skill === 'GALLERY_1') return <GalleryModal src="/deux.png" desc="Description à compléter" onClose={onClose} />;
-  if (skill === 'GALLERY_2') return <GalleryModal src="/trois.png" desc="Description à compléter" onClose={onClose} />;
+  if (skill === 'GALLERY_2') return <GalleryModal src="/trois.jpg" desc="Description à compléter" onClose={onClose} />;
+  if (skill === 'GALLERY_3') return <GalleryModal src="/quatre.png" desc="Description à compléter" onClose={onClose} />;
+  if (skill === 'GALLERY_4') return <GalleryModal src="/cinq.png" desc="Description à compléter" onClose={onClose} />;
+  if (skill === 'GALLERY_5') return <GalleryModal src="/six.png" desc="Description à compléter" onClose={onClose} />;
   const AC_EXPLANATIONS = {
     "AC21.01 - Diagnostiquer l'environnement en appréhendant les enjeux sociaux et écologiques": "J'ai développé cette compétence à travers plusieurs travaux individuels et en groupe, ainsi que la participation à une conférence du NIMEC lors de la Journée Ébroïcienne de Recherche sur les Transitions (JERT). Ces expériences m'ont permis de mieux comprendre les enjeux sociaux et écologiques et d'acquérir des capacités d'analyse de l'environnement.",
     "AC21.02 - Mettre en oeuvre une étude de marché dans un environnement complexe": "J'ai été initiée à cette compétence au cours de plusieurs travaux cette année. Lors d'une SAE en création d'entreprise, j'ai participé au jeu de simulation de marché Créasim, où nous avons réalisé une étude de marché approfondie pour maximiser notre part de marché. J'ai aussi mené une étude qualitative complète sur le cashback et participé au projet transverse « Jeunes pousses » où il a aussi fallu étudier notre marché pour suivre la meilleur stratégie. Je poursuis mon apprentissage de ces méthodes et souhaite les approfondir, car je ne me sens pas encore totalement à l'aise avec tous les aspects.",
@@ -419,14 +422,17 @@ const PageAccueil = ({ setActivePage, scrollContainerRef, scrollGallery, setSele
         {[
           { src: '/une.png', desc: 'Description à compléter' },
           { src: '/deux.png', desc: 'Description à compléter' },
-          { src: '/trois.png', desc: 'Description à compléter' },
+          { src: '/trois.jpg', desc: 'Description à compléter' },
+          { src: '/quatre.png', desc: 'Description à compléter' },
+          { src: '/cinq.png', desc: 'Description à compléter' },
+          { src: '/six.png', desc: 'Description à compléter' },
           null,
         ].map((item, i) => (
           <div key={i} className="flex-none w-[320px] aspect-video rounded-2xl overflow-hidden relative shadow-sm border border-white snap-start cursor-pointer group transition-all duration-500"
             style={{ background: '#FFF9C4' }}
             onClick={() => item && setSelectedSkill('GALLERY_' + i)}>
             {item ? (
-              <img src={item.src} alt={`Photo ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <img src={item.src} alt={`Photo ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" style={{ objectPosition: i === 0 ? 'center 30%' : 'center' }} />
             ) : (
               <div className="w-full h-full flex items-center justify-center">
                 <span className="italic text-xs uppercase tracking-tighter" style={{ color: '#827717', opacity: 0.45 }}>À venir</span>
@@ -1211,7 +1217,7 @@ const PageStages = () => (
           <div className="space-y-3 flex-1">
             <div className="flex flex-wrap items-center gap-3">
               <h4 className="text-3xl font-serif italic font-bold" style={{ color: '#1A202C' }}>Wallis et Futuna — La 1ère</h4>
-              <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: 'white', color: '#FF69B4' }}>2025 · TC2</span>
+              <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: 'white', color: '#FF69B4' }}>2026 · TC2</span>
             </div>
             <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.75 }}>
               Stage effectué au sein de <strong>La 1ère</strong>, la chaîne de France Télévisions présente dans les territoires
@@ -1474,7 +1480,7 @@ const PageMentionsLegales = ({ setActivePage }) => (
         <button onClick={() => setActivePage('accueil')}
           className="flex items-center gap-2 px-6 py-3 rounded-full border font-medium text-sm transition-all hover:shadow-md"
           style={{ borderColor: '#FF69B4', color: '#FF69B4' }}>
-          <ArrowLeft size={16} /> Retour
+          <ArrowLeft size={16} /> Retour à la page d'acceuil
         </button>
       </div>
     </div>
@@ -1507,7 +1513,7 @@ const PageRGPD = ({ setActivePage }) => (
         <button onClick={() => setActivePage('accueil')}
           className="flex items-center gap-2 px-6 py-3 rounded-full border font-medium text-sm transition-all hover:shadow-md"
           style={{ borderColor: '#FF69B4', color: '#FF69B4' }}>
-          <ArrowLeft size={16} /> Retour
+          <ArrowLeft size={16} /> Retour à la page d'acceuil
         </button>
       </div>
     </div>
