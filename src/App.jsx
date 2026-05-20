@@ -144,12 +144,12 @@ const ModalSkill = ({ skill, onClose }) => {
       </div>
     </div >
   );
-  if (skill === 'GALLERY_0') return <GalleryModal src="/une.png" desc="Description à compléter" onClose={onClose} />;
-  if (skill === 'GALLERY_1') return <GalleryModal src="/deux.png" desc="Description à compléter" onClose={onClose} />;
-  if (skill === 'GALLERY_2') return <GalleryModal src="/trois.jpg" desc="Description à compléter" onClose={onClose} />;
-  if (skill === 'GALLERY_3') return <GalleryModal src="/quatre.png" desc="Description à compléter" onClose={onClose} />;
-  if (skill === 'GALLERY_4') return <GalleryModal src="/cinq.png" desc="Description à compléter" onClose={onClose} />;
-  if (skill === 'GALLERY_5') return <GalleryModal src="/six.png" desc="Description à compléter" onClose={onClose} />;
+  if (skill === 'GALLERY_0') return <GalleryModal src="/une.png" desc="En 2024, je suis devenue cadet de la gendarmerie d'Eure et Loir. À cette occasion, j'ai pu défiler au 14 juillet auprès des forces de l'ordre à Chartres (28)." onClose={onClose} />;
+  if (skill === 'GALLERY_1') return <GalleryModal src="/deux.png" desc="Le jeudi 7 novembre 2025, dans le cadre du projet transverse, nous avons célébré l'ouverture des Jeunes Pousses organisée par la Maison de l'Entrepreneuriat de Rouen. De gauche à droite : Douaa Chihhane, Nafissatou Gueye, Lalia Soumaré, Nina Caliskan, Laura Fermigier, Chanez Megherat et moi-même. Photographe : Marie Pioche" onClose={onClose} />;
+  if (skill === 'GALLERY_2') return <GalleryModal src="/trois.jpg" desc="Au semestre 4, nous avons réalisé un flipbook pour promouvoir le BUT TC et voici l'image de fin de notre passage. De gauche à droite : Douaa Chihhane, Lalia Soumaré et moi. Ressources : Création d'une campagne publicitaire" onClose={onClose} />;
+  if (skill === 'GALLERY_3') return <GalleryModal src="/quatre.png" desc="Mise en scène d'un journal télévisé — le lundi 30 mars 2026, dans le cadre d'un exercice, j'ai tenu le rôle d'une intervenante lors d'une simulation de journal télévisé sur l'intelligence artificielle et l'avenir de l'emploi. À gauche de l'image, Victorine Gomis incarnait la présentatrice. Ressources : ECC — Enseignante : Madame Boukoum — Photographe : Mathilde Jaconot" onClose={onClose} />;
+  if (skill === 'GALLERY_4') return <GalleryModal src="/cinq.png" desc="Sky, le chien pédagogique pour le compte de Wallis et Futuna la 1ère — le jeudi 30 avril 2026, lors de mon stage, nous avons donné vie à Sky, un chien pédagogique irrésistible, pour enrichir le contenu du compte de Wallis et Futuna la 1ère. Caméraman : Jean-François Puakavase — Journaliste : Mirna Kilama — Mettre du chien : Xavier — Photographe : Olivia Garrett Alaïs" onClose={onClose} />;
+  if (skill === 'GALLERY_5') return <GalleryModal src="/six.png" desc="Le lundi 11 mai 2026, dans le cadre de mon stage, j'ai pu assister à un journal télévisé sur le plateau. Photographe : Stéphanie Seilala Vili" onClose={onClose} />;
   const AC_EXPLANATIONS = {
     "AC21.01 - Diagnostiquer l'environnement en appréhendant les enjeux sociaux et écologiques": "J'ai développé cette compétence à travers plusieurs travaux individuels et en groupe, ainsi que la participation à une conférence du NIMEC lors de la Journée Ébroïcienne de Recherche sur les Transitions (JERT). Ces expériences m'ont permis de mieux comprendre les enjeux sociaux et écologiques et d'acquérir des capacités d'analyse de l'environnement.",
     "AC21.02 - Mettre en oeuvre une étude de marché dans un environnement complexe": "J'ai été initiée à cette compétence au cours de plusieurs travaux cette année. Lors d'une SAE en création d'entreprise, j'ai participé au jeu de simulation de marché Créasim, où nous avons réalisé une étude de marché approfondie pour maximiser notre part de marché. J'ai aussi mené une étude qualitative complète sur le cashback et participé au projet transverse « Jeunes pousses » où il a aussi fallu étudier notre marché pour suivre la meilleur stratégie. Je poursuis mon apprentissage de ces méthodes et souhaite les approfondir, car je ne me sens pas encore totalement à l'aise avec tous les aspects.",
@@ -420,12 +420,12 @@ const PageAccueil = ({ setActivePage, scrollContainerRef, scrollGallery, setSele
       <div ref={scrollContainerRef} className="flex gap-6 overflow-x-auto pb-6 snap-x"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
         {[
-          { src: '/une.png', desc: 'Description à compléter' },
-          { src: '/deux.png', desc: 'Description à compléter' },
-          { src: '/trois.jpg', desc: 'Description à compléter' },
-          { src: '/quatre.png', desc: 'Description à compléter' },
-          { src: '/cinq.png', desc: 'Description à compléter' },
-          { src: '/six.png', desc: 'Description à compléter' },
+          { src: '/une.png', desc: "En 2024, je suis devenue cadet de la gendarmerie d'Eure et Loir. À cette occasion, j'ai pu défiler au 14 juillet auprès des forces de l'ordre à Chartres (28)." },
+          { src: '/deux.png', desc: "Le jeudi 7 novembre 2025, dans le cadre du projet transverse, nous avons célébré l'ouverture des Jeunes Pousses organisée par la Maison de l'Entrepreneuriat de Rouen. De gauche à droite : Douaa Chihhane, Nafissatou Gueye, Lalia Soumaré, Nina Caliskan, Laura Fermigier, Chanez Megherat et moi-même. Photographe : Marie Pioche" },
+          { src: '/trois.jpg', desc: "Au semestre 4, nous avons réalisé un flipbook pour promouvoir le BUT TC et voici l'image de fin de notre passage. De gauche à droite : Douaa Chihhane, Lalia Soumaré et moi. Ressources : Création d'une campagne publicitaire" },
+          { src: '/quatre.png', desc: "Mise en scène d'un journal télévisé — le lundi 30 mars 2026, dans le cadre d'un exercice, j'ai tenu le rôle d'une intervenante lors d'une simulation de journal télévisé sur l'intelligence artificielle et l'avenir de l'emploi. À gauche de l'image, Victorine Gomis incarnait la présentatrice. Ressources : ECC — Enseignante : Madame Boukoum — Photographe : Mathilde Jaconot" },
+          { src: '/cinq.png', desc: "Sky, le chien pédagogique pour le compte de Wallis et Futuna la 1ère — le jeudi 30 avril 2026, lors de mon stage, nous avons donné vie à Sky, un chien pédagogique irrésistible, pour enrichir le contenu du compte de Wallis et Futuna la 1ère. Caméraman : Jean-François Puakavase — Journaliste : Mirna Kilama — Mettre du chien : Xavier — Photographe : Olivia Garrett Alaïs" },
+          { src: '/six.png', desc: "Le lundi 11 mai 2026, dans le cadre de mon stage, j'ai pu assister à un journal télévisé sur le plateau. Photographe : Stéphanie Seilala Vili" },
           null,
         ].map((item, i) => (
           <div key={i} className="flex-none w-[320px] aspect-video rounded-2xl overflow-hidden relative shadow-sm border border-white snap-start cursor-pointer group transition-all duration-500"
