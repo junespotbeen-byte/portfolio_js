@@ -102,13 +102,15 @@ const COMPETENCES = {
     ],
   },
 };
-const GalleryModal = ({ src, desc, onClose }) => (
+const GalleryModal = ({ src, desc, onClose, objectPosition = 'center' }) => (
   <div className="fixed inset-0 z-[100] flex items-center justify-center p-4"
     style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)' }}
     onClick={onClose}>
     <div className="bg-white w-full max-w-2xl rounded-[40px] shadow-2xl overflow-hidden"
       onClick={e => e.stopPropagation()}>
-      <img src={src} alt="Photo galerie" style={{ width: '100%', maxHeight: '70vh', objectFit: 'contain' }} />
+      <div style={{ width: '100%', height: '420px', overflow: 'hidden' }}>
+        <img src={src} alt="Photo galerie" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: objectPosition }} />
+      </div>
       <div className="p-6 space-y-3">
         <p className="text-base leading-relaxed" style={{ color: '#1A202C' }}>{desc}</p>
         <button onClick={onClose} className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Fermer</button>
@@ -144,12 +146,12 @@ const ModalSkill = ({ skill, onClose }) => {
       </div>
     </div >
   );
-  if (skill === 'GALLERY_0') return <GalleryModal src="/une.png" desc="En 2024, je suis devenue cadet de la gendarmerie d'Eure et Loir. À cette occasion, j'ai pu défiler au 14 juillet auprès des forces de l'ordre à Chartres (28)." onClose={onClose} />;
+  if (skill === 'GALLERY_0') return <GalleryModal src="/une.png" desc="En 2024, je suis devenue cadet de la gendarmerie d'Eure et Loir. À cette occasion, j'ai pu défiler au 14 juillet auprès des forces de l'ordre à Chartres (28)." onClose={onClose} objectPosition="center 30%" />;
   if (skill === 'GALLERY_1') return <GalleryModal src="/deux.png" desc="Le jeudi 7 novembre 2025, dans le cadre du projet transverse, nous avons célébré l'ouverture des Jeunes Pousses organisée par la Maison de l'Entrepreneuriat de Rouen. De gauche à droite : Douaa Chihhane, Nafissatou Gueye, Lalia Soumaré, Nina Caliskan, Laura Fermigier, Chanez Megherat et moi-même. Photographe : Marie Pioche" onClose={onClose} />;
   if (skill === 'GALLERY_2') return <GalleryModal src="/trois.jpg" desc="Au semestre 4, nous avons réalisé un flipbook pour promouvoir le BUT TC et voici l'image de fin de notre passage. De gauche à droite : Douaa Chihhane, Lalia Soumaré et moi. Ressources : Création d'une campagne publicitaire" onClose={onClose} />;
-  if (skill === 'GALLERY_3') return <GalleryModal src="/quatre.png" desc="Mise en scène d'un journal télévisé — le lundi 30 mars 2026, dans le cadre d'un exercice, j'ai tenu le rôle d'une intervenante lors d'une simulation de journal télévisé sur l'intelligence artificielle et l'avenir de l'emploi. À gauche de l'image, Victorine Gomis incarnait la présentatrice. Ressources : ECC — Enseignante : Madame Boukoum — Photographe : Mathilde Jaconot" onClose={onClose} />;
+  if (skill === 'GALLERY_3') return <GalleryModal src="/quatre.png" desc="Mise en scène d'un journal télévisé : mon intervention sur l'intelligence artificielle et l'avenir de l'emploi. Le lundi 30 mars 2026, dans le cadre d'un exercice, j'ai tenu le rôle d'une intervenante lors d'une simulation de journal télévisé.  À gauche de l'image, Victorine Gomis incarnait la présentatrice. Ressources : ECC - Enseignante : Madame Boukoum - Photographe : Mathilde Jaconot" onClose={onClose} />;
   if (skill === 'GALLERY_4') return <GalleryModal src="/cinq.png" desc="Sky, le chien pédagogique pour le compte de Wallis et Futuna la 1ère — le jeudi 30 avril 2026, lors de mon stage, nous avons donné vie à Sky, un chien pédagogique irrésistible, pour enrichir le contenu du compte de Wallis et Futuna la 1ère. Caméraman : Jean-François Puakavase — Journaliste : Mirna Kilama — Mettre du chien : Xavier — Photographe : Olivia Garrett Alaïs" onClose={onClose} />;
-  if (skill === 'GALLERY_5') return <GalleryModal src="/six.png" desc="Le lundi 11 mai 2026, dans le cadre de mon stage, j'ai pu assister à un journal télévisé sur le plateau. Photographe : Stéphanie Seilala Vili" onClose={onClose} />;
+  if (skill === 'GALLERY_5') return <GalleryModal src="/six.png" desc="Le lundi 11 mai 2026, dans le cadre de mon stage, j'ai pu assister à un journal télévisé en directe sur le plateau. Photographe : Stéphanie Seilala Vili" onClose={onClose} />;
   const AC_EXPLANATIONS = {
     "AC21.01 - Diagnostiquer l'environnement en appréhendant les enjeux sociaux et écologiques": "J'ai développé cette compétence à travers plusieurs travaux individuels et en groupe, ainsi que la participation à une conférence du NIMEC lors de la Journée Ébroïcienne de Recherche sur les Transitions (JERT). Ces expériences m'ont permis de mieux comprendre les enjeux sociaux et écologiques et d'acquérir des capacités d'analyse de l'environnement.",
     "AC21.02 - Mettre en oeuvre une étude de marché dans un environnement complexe": "J'ai été initiée à cette compétence au cours de plusieurs travaux cette année. Lors d'une SAE en création d'entreprise, j'ai participé au jeu de simulation de marché Créasim, où nous avons réalisé une étude de marché approfondie pour maximiser notre part de marché. J'ai aussi mené une étude qualitative complète sur le cashback et participé au projet transverse « Jeunes pousses » où il a aussi fallu étudier notre marché pour suivre la meilleur stratégie. Je poursuis mon apprentissage de ces méthodes et souhaite les approfondir, car je ne me sens pas encore totalement à l'aise avec tous les aspects.",
@@ -423,9 +425,9 @@ const PageAccueil = ({ setActivePage, scrollContainerRef, scrollGallery, setSele
           { src: '/une.png', desc: "En 2024, je suis devenue cadet de la gendarmerie d'Eure et Loir. À cette occasion, j'ai pu défiler au 14 juillet auprès des forces de l'ordre à Chartres (28)." },
           { src: '/deux.png', desc: "Le jeudi 7 novembre 2025, dans le cadre du projet transverse, nous avons célébré l'ouverture des Jeunes Pousses organisée par la Maison de l'Entrepreneuriat de Rouen. De gauche à droite : Douaa Chihhane, Nafissatou Gueye, Lalia Soumaré, Nina Caliskan, Laura Fermigier, Chanez Megherat et moi-même. Photographe : Marie Pioche" },
           { src: '/trois.jpg', desc: "Au semestre 4, nous avons réalisé un flipbook pour promouvoir le BUT TC et voici l'image de fin de notre passage. De gauche à droite : Douaa Chihhane, Lalia Soumaré et moi. Ressources : Création d'une campagne publicitaire" },
-          { src: '/quatre.png', desc: "Mise en scène d'un journal télévisé — le lundi 30 mars 2026, dans le cadre d'un exercice, j'ai tenu le rôle d'une intervenante lors d'une simulation de journal télévisé sur l'intelligence artificielle et l'avenir de l'emploi. À gauche de l'image, Victorine Gomis incarnait la présentatrice. Ressources : ECC — Enseignante : Madame Boukoum — Photographe : Mathilde Jaconot" },
+          { src: '/quatre.png', desc: "Mise en scène d'un journal télévisé : mon intervention sur l'intelligence artificielle et l'avenir de l'emploi. Le lundi 30 mars 2026, dans le cadre d'un exercice, j'ai tenu le rôle d'une intervenante lors d'une simulation de journal télévisé.  À gauche de l'image, Victorine Gomis incarnait la présentatrice. Ressources : ECC - Enseignante : Madame Boukoum - Photographe : Mathilde Jaconot" },
           { src: '/cinq.png', desc: "Sky, le chien pédagogique pour le compte de Wallis et Futuna la 1ère — le jeudi 30 avril 2026, lors de mon stage, nous avons donné vie à Sky, un chien pédagogique irrésistible, pour enrichir le contenu du compte de Wallis et Futuna la 1ère. Caméraman : Jean-François Puakavase — Journaliste : Mirna Kilama — Mettre du chien : Xavier — Photographe : Olivia Garrett Alaïs" },
-          { src: '/six.png', desc: "Le lundi 11 mai 2026, dans le cadre de mon stage, j'ai pu assister à un journal télévisé sur le plateau. Photographe : Stéphanie Seilala Vili" },
+          { src: '/six.png', desc: "Le lundi 11 mai 2026, dans le cadre de mon stage, j'ai pu assister à un journal télévisé en directe sur le plateau. Photographe : Stéphanie Seilala Vili" },
           null,
         ].map((item, i) => (
           <div key={i} className="flex-none w-[320px] aspect-video rounded-2xl overflow-hidden relative shadow-sm border border-white snap-start cursor-pointer group transition-all duration-500"
@@ -919,7 +921,7 @@ const PageProjets = ({ setActivePage }) => (
     </div>
   </div>
 );
-const PagePPP = () => (
+const PagePPP = ({ setActivePage }) => (
   <div className="space-y-12">
     <div className="space-y-2">
       <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Mon PPP</h2>
@@ -1018,9 +1020,16 @@ const PagePPP = () => (
         </a>
       </div>
     </div>
+    <div className="flex justify-center pt-4">
+      <button onClick={() => setActivePage('projets')}
+        className="flex items-center gap-2 px-6 py-3 rounded-full border font-medium text-sm transition-all hover:shadow-md"
+        style={{ borderColor: '#FF69B4', color: '#FF69B4' }}>
+        <ArrowLeft size={16} /> Voir d'autres projets
+      </button>
+    </div>
   </div>
 );
-const PageProjetTransverse = () => (
+const PageProjetTransverse = ({ setActivePage }) => (
   <div className="space-y-12">
 
     {/* Header */}
@@ -1187,11 +1196,17 @@ const PageProjetTransverse = () => (
         </div>
       </a>
     </div>
-
+    <div className="flex justify-center pt-4">
+      <button onClick={() => setActivePage('projets')}
+        className="flex items-center gap-2 px-6 py-3 rounded-full border font-medium text-sm transition-all hover:shadow-md"
+        style={{ borderColor: '#FF69B4', color: '#FF69B4' }}>
+        <ArrowLeft size={16} /> Voir d'autres projets
+      </button>
+    </div>
   </div>
 );
 
-const PageStages = () => (
+const PageStages = ({ setActivePage }) => (
   <div className="space-y-12">
 
     {/* Header */}
@@ -1311,138 +1326,168 @@ const PageStages = () => (
         </a>
       </div>
     </div>
-
+    <div className="flex justify-center pt-4">
+      <button onClick={() => setActivePage('projets')}
+        className="flex items-center gap-2 px-6 py-3 rounded-full border font-medium text-sm transition-all hover:shadow-md"
+        style={{ borderColor: '#FF69B4', color: '#FF69B4' }}>
+        <ArrowLeft size={16} /> Voir d'autres projets
+      </button>
+    </div>
   </div>
 );
 
-const PageSAE = () => (
-  <div className="space-y-12">
+const PageSAE = ({ setActivePage }) => {
+  const [expanded, setExpanded] = useState(null);
 
-    {/* Header */}
-    <div className="space-y-2">
-      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>BUT TC · Semestres 3 & 4</p>
-      <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Mes SAE</h2>
-      <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>Situations d'Apprentissage et d'Évaluation — des projets concrets pour ancrer les compétences.</p>
-    </div>
+  const saes = [
+    {
+      id: 0,
+      num: '01',
+      semester: 'S3',
+      emoji: '💡',
+      title: "Création d'entreprise",
+      teaser: "Concevoir et pitcher un projet entrepreneurial de A à Z.",
+      problematique: "Comment concevoir et lancer un projet entrepreneurial viable sur un marché concurrentiel ?",
+      description: "Concevoir et formaliser un projet entrepreneurial de A à Z — étude de marché, modèle économique, stratégie et pitch devant jury.",
+      competences: ['Entrepreneuriat', 'Étude de marché', 'Business plan', 'Pitch'],
+      preuve: null,
+    },
+    {
+      id: 1,
+      num: '02',
+      semester: 'S3',
+      emoji: '📊',
+      title: "Analyse d'une activité digitale",
+      teaser: "Auditer la présence numérique d'une organisation et formuler des recommandations.",
+      problematique: "Comment auditer et améliorer la présence numérique d'une organisation sur ses canaux digitaux ?",
+      description: "Auditer la présence digitale d'une organisation, identifier ses forces et axes d'amélioration, et formuler des recommandations actionnables.",
+      competences: ['Marketing digital', 'Audit', 'Réseaux sociaux', 'Analyse'],
+      preuve: null,
+    },
+    {
+      id: 2,
+      num: '03',
+      semester: 'S4',
+      emoji: '📈',
+      title: "Pilotage commercial d'une organisation",
+      teaser: "Analyser et optimiser la performance commerciale d'une structure.",
+      problematique: "Comment analyser et optimiser la performance commerciale d'une structure pour atteindre ses objectifs ?",
+      description: "Analyser et piloter la performance commerciale d'une structure — objectifs, indicateurs, plan d'action et recommandations stratégiques.",
+      competences: ['Stratégie commerciale', 'KPIs', 'Analyse', 'Management'],
+      preuve: null,
+    },
+    {
+      id: 3,
+      num: '04',
+      semester: 'S4',
+      emoji: '💻',
+      title: "Création d'un site web",
+      teaser: "Concevoir et développer un site web fonctionnel de bout en bout.",
+      problematique: "Comment concevoir et développer un site web fonctionnel et attractif de bout en bout ?",
+      description: "Concevoir et développer un site web fonctionnel — de la définition du besoin à la mise en ligne, en passant par le design et le contenu éditorial.",
+      competences: ['Web', 'Design', 'Contenu', 'UX'],
+      preuve: null,
+    },
+  ];
 
-    {/* Intro */}
-    <div className="bg-white rounded-[30px] p-8 border" style={{ borderColor: '#FFF9C4' }}>
-      <p className="text-base leading-relaxed" style={{ color: '#1A202C', opacity: 0.8 }}>
-        Les SAE sont au cœur du BUT TC : elles nous plongent dans des situations professionnelles réelles où l'on doit
-        mobiliser toutes nos compétences — marketing, commercial, communication, digital — pour répondre à une problématique concrète.
-        En deux ans, j'ai mené <strong>quatre SAE</strong> qui m'ont permis de progresser à la fois
-        sur le fond et sur la forme.
-      </p>
-    </div>
+  return (
+    <div className="space-y-10">
 
-    {/* Semestre 3 */}
-    <div className="space-y-5">
-      <div className="flex items-center gap-4">
-        <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Semestre 3</h3>
-        <div className="flex-1 h-px" style={{ background: '#FFB6C1' }} />
+      <div className="space-y-2">
+        <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>BUT TC · Semestres 3 & 4</p>
+        <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Mes SAE</h2>
+        <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>Situations d'Apprentissage et d'Évaluation — des projets concrets pour ancrer les compétences.</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        {/* SAE S3 - 1 */}
-        <div className="bg-white rounded-[30px] p-8 border space-y-5" style={{ borderColor: '#FFF9C4' }}>
-          <div className="flex items-start justify-between gap-3">
-            <div className="p-4 rounded-2xl" style={{ background: '#FFF9C4' }}>
-              <span style={{ fontSize: '2rem' }}>💡</span>
+      <div className="space-y-4">
+        {saes.map((sae) => {
+          const isOpen = expanded === sae.id;
+          return (
+            <div key={sae.id}
+              className="relative rounded-[28px] overflow-hidden border transition-all duration-300 cursor-pointer"
+              style={{
+                borderColor: isOpen ? '#FF69B4' : '#FFF9C4',
+                background: isOpen ? '#FFF9C4' : 'white',
+                boxShadow: isOpen ? '0 6px 32px rgba(255,105,180,0.12)' : '0 1px 4px rgba(0,0,0,0.04)',
+              }}
+              onClick={() => setExpanded(isOpen ? null : sae.id)}>
+
+              {/* Grand numéro en filigrane */}
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 font-black leading-none select-none pointer-events-none"
+                style={{ fontSize: '9rem', color: '#FF69B4', opacity: isOpen ? 0.06 : 0.05, fontFamily: 'serif' }}>
+                {sae.num}
+              </div>
+
+              <div className="relative z-10 p-8">
+                <div className="flex items-start justify-between gap-6">
+                  <div className="space-y-3 flex-1">
+                    <div className="flex items-center gap-3">
+                      <span className="font-black font-serif" style={{ fontSize: '1.6rem', color: '#FF69B4', opacity: 0.25 }}>{sae.num}</span>
+                      <span className="text-xs font-bold px-2.5 py-0.5 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{sae.semester}</span>
+                    </div>
+                    <h3 className="text-2xl font-bold font-serif italic leading-tight" style={{ color: '#1A202C' }}>{sae.title}</h3>
+                    <p className="text-sm" style={{ color: '#1A202C', opacity: 0.55 }}>{sae.teaser}</p>
+                  </div>
+                  <div className="flex-none text-4xl mt-1">{sae.emoji}</div>
+                </div>
+
+                {!isOpen && (
+                  <div className="mt-5 flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>
+                    Lire <ArrowRight size={13} />
+                  </div>
+                )}
+
+                {isOpen && (
+                  <div className="mt-6 space-y-5 border-t pt-6" style={{ borderColor: '#FFB6C1' }}>
+                    <div className="space-y-1">
+                      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Problématique</p>
+                      <p className="text-base font-serif italic leading-relaxed" style={{ color: '#1A202C' }}>« {sae.problematique} »</p>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Démarche</p>
+                      <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.72 }}>{sae.description}</p>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Compétences mobilisées</p>
+                      <div className="flex flex-wrap gap-2">
+                        {sae.competences.map((c, i) => (
+                          <span key={i} className="text-xs px-3 py-1 rounded-full font-medium" style={{ background: '#FFB6C1', color: '#1A202C' }}>{c}</span>
+                        ))}
+                      </div>
+                    </div>
+                    {sae.preuve && (
+                      <a href={sae.preuve} target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border font-bold text-sm transition-all hover:shadow-md"
+                        style={{ borderColor: '#FF69B4', color: '#FF69B4', textDecoration: 'none' }}
+                        onClick={e => e.stopPropagation()}>
+                        <FileText size={14} /> Voir la preuve
+                      </a>
+                    )}
+                    <div>
+                      <button className="text-xs font-bold uppercase tracking-widest flex items-center gap-1"
+                        style={{ color: '#FF69B4' }}
+                        onClick={e => { e.stopPropagation(); setExpanded(null); }}>
+                        Réduire ↑
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-            <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#FF69B4' }}>S3</span>
-          </div>
-          <div className="space-y-2">
-            <h4 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Création d'entreprise</h4>
-            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.65 }}>
-              Concevoir et formaliser un projet entrepreneurial de A à Z — étude de marché, modèle économique, stratégie et pitch.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {['Entrepreneuriat', 'Étude de marché', 'Business plan'].map((t, i) => (
-              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{t}</span>
-            ))}
-          </div>
-        </div>
+          );
+        })}
+      </div>
 
-        {/* SAE S3 - 2 */}
-        <div className="bg-white rounded-[30px] p-8 border space-y-5" style={{ borderColor: '#FFF9C4' }}>
-          <div className="flex items-start justify-between gap-3">
-            <div className="p-4 rounded-2xl" style={{ background: '#FFF9C4' }}>
-              <span style={{ fontSize: '2rem' }}>📊</span>
-            </div>
-            <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#FF69B4' }}>S3</span>
-          </div>
-          <div className="space-y-2">
-            <h4 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Analyse d'une activité digitale</h4>
-            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.65 }}>
-              Auditer la présence digitale d'une organisation, identifier ses forces et ses axes d'amélioration sur les canaux numériques.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {['Marketing digital', 'Audit', 'Réseaux sociaux'].map((t, i) => (
-              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{t}</span>
-            ))}
-          </div>
-        </div>
-
+      <div className="flex justify-center pt-4">
+        <button onClick={() => setActivePage('projets')}
+          className="flex items-center gap-2 px-6 py-3 rounded-full border font-medium text-sm transition-all hover:shadow-md"
+          style={{ borderColor: '#FF69B4', color: '#FF69B4' }}>
+          <ArrowLeft size={16} /> Voir d'autres projets
+        </button>
       </div>
     </div>
-
-    {/* Semestre 4 */}
-    <div className="space-y-5">
-      <div className="flex items-center gap-4">
-        <h3 className="text-2xl font-serif italic" style={{ color: '#FF69B4' }}>✦ Semestre 4</h3>
-        <div className="flex-1 h-px" style={{ background: '#FFB6C1' }} />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        {/* SAE S4 - 1 */}
-        <div className="bg-white rounded-[30px] p-8 border space-y-5" style={{ borderColor: '#FFF9C4' }}>
-          <div className="flex items-start justify-between gap-3">
-            <div className="p-4 rounded-2xl" style={{ background: '#FFF9C4' }}>
-              <span style={{ fontSize: '2rem' }}>📈</span>
-            </div>
-            <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#FF69B4' }}>S4</span>
-          </div>
-          <div className="space-y-2">
-            <h4 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Pilotage commercial d'une organisation</h4>
-            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.65 }}>
-              Analyser et piloter la performance commerciale d'une structure — objectifs, indicateurs, plan d'action et recommandations stratégiques.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {['Stratégie commerciale', 'KPIs', 'Analyse'].map((t, i) => (
-              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{t}</span>
-            ))}
-          </div>
-        </div>
-
-        {/* SAE S4 - 2 */}
-        <div className="bg-white rounded-[30px] p-8 border space-y-5" style={{ borderColor: '#FFF9C4' }}>
-          <div className="flex items-start justify-between gap-3">
-            <div className="p-4 rounded-2xl" style={{ background: '#FFF9C4' }}>
-              <span style={{ fontSize: '2rem' }}>💻</span>
-            </div>
-            <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#FF69B4' }}>S4</span>
-          </div>
-          <div className="space-y-2">
-            <h4 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Création d'un site web</h4>
-            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.65 }}>
-              Concevoir et développer un site web fonctionnel — de la définition du besoin à la mise en ligne, en passant par le design et le contenu.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {['Web', 'Design', 'Contenu'].map((t, i) => (
-              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{t}</span>
-            ))}
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-);
+  );
+};
 
 const PagePlaceholder = ({ title }) => (
   <div className="space-y-8">
@@ -1622,10 +1667,10 @@ const renderPage = (page, deps) => {
     'projet-transverse': 'Projet Transverse',
     'ppp': 'PPP (Projet Personnel et Professionnel)',
   };
-  if (page === 'ppp') return <PagePPP />;
-  if (page === 'projet-transverse') return <PageProjetTransverse />;
-  if (page === 'sae') return <PageSAE />;
-  if (page === 'stages') return <PageStages />;
+  if (page === 'ppp') return <PagePPP setActivePage={setActivePage} />;
+  if (page === 'projet-transverse') return <PageProjetTransverse setActivePage={setActivePage} />;
+  if (page === 'sae') return <PageSAE setActivePage={setActivePage} />;
+  if (page === 'stages') return <PageStages setActivePage={setActivePage} />;
   if (projectTitles[page]) return <PagePlaceholder title={projectTitles[page]} />;
   return null;
 };
