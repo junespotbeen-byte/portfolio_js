@@ -831,14 +831,14 @@ const PageProjets = ({ setActivePage }) => (
           </p>
           <div className="space-y-3 flex-1">
             <div className="flex items-start gap-3 p-3 rounded-2xl" style={{ background: '#FFF9C4' }}>
-              <span className="text-xl">🌺</span>
+              <img src="/logofrance1.png" alt="La 1ère" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
               <div>
                 <p className="text-xs font-bold" style={{ color: '#1A202C' }}>Wallis et Futuna — La 1ère</p>
                 <p className="text-xs" style={{ color: '#1A202C', opacity: 0.6 }}>TC2 · Audiovisuel · Pacifique Sud</p>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 rounded-2xl" style={{ background: '#FFF9C4' }}>
-              <span className="text-xl">🏃</span>
+              <img src="/intersport.png" alt="Intersport" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
               <div>
                 <p className="text-xs font-bold" style={{ color: '#1A202C' }}>Intersport — Guichainville</p>
                 <p className="text-xs" style={{ color: '#1A202C', opacity: 0.6 }}>TC1 · Vente · Relation client</p>
@@ -1206,7 +1206,18 @@ const PageProjetTransverse = ({ setActivePage }) => (
   </div>
 );
 
-const PageStages = ({ setActivePage }) => (
+const PageStages = ({ setActivePage, setActiveSkill }) => {
+  const [muted, setMuted] = useState([true, true, true]);
+  const videoRefs = [useRef(null), useRef(null), useRef(null)];
+  const [progress, setProgress] = useState([0, 0, 0]);
+
+const videos = [
+  { src: '/preuves/stages/video1.mp4', label: 'Des sénateurs à Wallis' },
+  { src: '/preuves/stages/video2.mp4', label: 'Lycéens futuniens préparent St-Pierre Chanel' },
+  { src: '/preuves/stages/video3.mp4', label: 'Sky le chien pédagogique' },
+];
+
+  return (
   <div className="space-y-12">
 
     {/* Header */}
@@ -1228,7 +1239,7 @@ const PageStages = ({ setActivePage }) => (
 
         {/* Bandeau */}
         <div className="p-8 flex flex-col md:flex-row gap-6 items-center" style={{ background: 'linear-gradient(135deg, #FFB6C1 0%, #FFF9C4 100%)' }}>
-          <div className="shrink-0 text-center" style={{ fontSize: '5rem', lineHeight: 1 }}>🌺</div>
+          <img src="/logofrance1.png" alt="La 1ère" style={{ width: '80px', height: '80px', objectFit: 'contain' }} />
           <div className="space-y-3 flex-1">
             <div className="flex flex-wrap items-center gap-3">
               <h4 className="text-3xl font-serif italic font-bold" style={{ color: '#1A202C' }}>Wallis et Futuna — La 1ère</h4>
@@ -1249,33 +1260,56 @@ const PageStages = ({ setActivePage }) => (
         {/* Contenu */}
         <div className="bg-white p-8 space-y-8">
 
-          {/* Contexte */}
+{/* Contexte */}
           <div className="space-y-3">
             <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Contexte</p>
-            <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
-              <em>À compléter — présentation de La 1ère Wallis-et-Futuna, contexte du stage, durée...</em>
-            </p>
+            <div className="space-y-3 text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
+              <p><em>Stage effectué au sein de <strong>Wallis la Première</strong>, antenne locale de France Télévisions, du 20 avril au 12 juin 2026 — soit deux mois à l'autre bout du monde, dans un territoire unique du Pacifique Sud.</em></p>
+              <p><em>Plongée directement dans le quotidien d'une petite station qui couvre tout : radio, télévision, web et réseaux sociaux. J'ai eu la chance de toucher à beaucoup de choses — de la veille des réseaux sociaux à la création de contenu, du reportage terrain à la participation radio, en passant par une formation de trois jours au numérique France Télévisions avec du montage vidéo, un état des lieux du compte Wallis, et un exercice de vidéo incarnée face au prompteur.</em></p>
+              <p><em>Sur le terrain, les sorties reportage sont presque quotidiennes — chargée de filmer en 9:16 pour les réseaux sociaux. J'ai posé mes questions pour un sujet radio, répondu à des questions sur les repas à 1€ à l'université, assisté à un journal télévisé en direct, rencontré les rois coutumiers et le préfet, et fait des sorties aux îlots de Wallis. Chaque jour apportait quelque chose de nouveau.</em></p>
+              <p><em>L'ambiance est bienveillante, le rythme est à l'image du territoire — ici, rien ne presse, on a le temps. J'ai partagé mon premier mois avec une autre stagiaire wallisienne super sympa, et je repars avec une autonomie renforcée et l'envie d'en apprendre encore.</em></p>
+            </div>
           </div>
 
           {/* Missions */}
           <div className="space-y-3">
             <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Mes missions</p>
             <div className="space-y-2">
-              {['Mission 1 — à compléter', 'Mission 2 — à compléter', 'Mission 3 — à compléter'].map((m, i) => (
+              {[
+                'Animation des réseaux sociaux de France TV Wallis-et-Futuna',
+                'Création de contenus',
+                'Veille et analyse de l\'activité',
+                'Participation aux productions éditoriales',
+                'Gestion quotidienne et organisation',
+              ].map((m, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="mt-1 w-2 h-2 rounded-full shrink-0" style={{ background: '#FF69B4' }} />
-                  <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.5 }}>{m}</p>
+                  <p className="text-sm" style={{ color: '#1A202C', opacity: 0.7 }}>{m}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Compétences */}
+{/* Compétences */}
           <div className="space-y-3">
             <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Compétences mobilisées</p>
             <div className="flex flex-wrap gap-2">
-              {['À compléter', 'À compléter', 'À compléter'].map((c, i) => (
-                <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#1A202C', opacity: 0.5 }}>{c}</span>
+              {[
+                { label: 'AC23.01 — Élaborer une stratégie de communication adaptée au brief agence', ac: 'AC23.01 - Élaborer une stratégie de communication adaptée au brief agence', page: 'communication' },
+                { label: 'AC23.02 — Établir une stratégie de moyens en utilisant les indicateurs de choix des supports', ac: 'AC23.02 - Établir une stratégie de moyens en utilisant les indicateurs de choix des supports', page: 'communication' },
+                { label: 'AC23.04 — Mettre en œuvre une stratégie digitale (blog, réseaux sociaux, e-réputation)', ac: "AC23.04 - Mettre en oeuvre une stratégie digitale (blog, réseaux sociaux, influenceurs) en mesurant les performances et en veillant à l'e-réputation", page: 'communication' },
+                { label: 'AC24.01 — Mobiliser des indicateurs de performance', ac: 'AC24.01 - Mobiliser des indicateurs de performance en fonction du volume et de la variété des données', page: 'mkt-digital' },
+                { label: 'AC24.02 — Identifier les spécificités du marketing digital', ac: 'AC24.02 - Identifier les spécificités du marketing digital', page: 'mkt-digital' },
+                { label: 'AC25.05 — Utiliser les techniques de créativité individuelle et collective', ac: 'AC25.05 - Utiliser les techniques de créativité individuelle et collective', page: 'ebusiness' },
+                { label: "AC25.06 — Contribuer à l'enrichissement d'un projet collectif", ac: "AC25.06 - Contribuer à l'enrichissement d'un projet collectif", page: 'ebusiness' },
+              ].map((c, i) => (
+                <button key={i} onClick={() => { setActivePage(c.page); setActiveSkill(c.ac); }}
+                  className="text-xs px-3 py-1 rounded-full transition-colors"
+                  style={{ background: '#FFF9C4', color: '#1A202C', cursor: 'pointer', border: 'none' }}
+                  onMouseEnter={e => e.currentTarget.style.background = '#FFB6C1'}
+                  onMouseLeave={e => e.currentTarget.style.background = '#FFF9C4'}>
+                  {c.label}
+                </button>
               ))}
             </div>
           </div>
@@ -1284,7 +1318,102 @@ const PageStages = ({ setActivePage }) => (
           <div className="rounded-[20px] p-6 space-y-2" style={{ background: '#FFF9C4' }}>
             <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Ce que j'en retiens</p>
             <p className="text-sm leading-relaxed italic" style={{ color: '#1A202C', opacity: 0.6 }}>
-              À compléter — bilan personnel, apprentissages, ce que ce stage t'a apporté.
+              Ce stage m'a appris que la communication, c'est avant tout du terrain — filmer, observer, poser des questions, s'adapter. Wallis-et-Futuna m'a offert bien plus qu'une expérience professionnelle : une autre façon de voir le temps, le travail, et le monde.
+            </p>
+          </div>
+
+          {/* Mes premiers travaux */}
+          <div className="space-y-6">
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Mes premiers travaux</p>
+            <div className="flex flex-wrap justify-center gap-10">
+              {videos.map((video, i) => (
+                <div key={i} className="flex flex-col items-center gap-4">
+                  {/* Cadre téléphone */}
+                  <div className="relative flex-none" style={{ width: '240px' }}>
+                    <div className="rounded-[40px] overflow-hidden relative"
+                      style={{ border: '7px solid #1A202C', aspectRatio: '9/16', background: '#111' }}>
+                      {/* Encoche caméra */}
+                      <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 rounded-full"
+                        style={{ width: '40px', height: '7px', background: '#1A202C' }} />
+                      <video
+                        ref={videoRefs[i]}
+                        src={video.src}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', cursor: 'pointer' }}
+                        autoPlay
+                        loop
+                        muted={muted[i]}
+                        playsInline
+                        onClick={e => e.target.paused ? e.target.play() : e.target.pause()}
+                        onTimeUpdate={() => {
+                          const v = videoRefs[i].current;
+                          if (v && v.duration) {
+                            setProgress(prev => prev.map((p, j) => j === i ? (v.currentTime / v.duration) * 100 : p));
+                          }
+                        }}
+                      />
+                    </div>
+                    {/* Boutons latéraux décoratifs */}
+                    <div className="absolute right-[-9px] top-20 w-2 h-12 rounded-r-full" style={{ background: '#1A202C' }} />
+                    <div className="absolute left-[-9px] top-16 w-2 h-8 rounded-l-full" style={{ background: '#1A202C' }} />
+                    <div className="absolute left-[-9px] top-28 w-2 h-8 rounded-l-full" style={{ background: '#1A202C' }} />
+                  </div>
+                  {/* Label */}
+                  <p className="text-xs text-center font-medium max-w-[200px] leading-tight" style={{ color: '#1A202C', opacity: 0.7 }}>
+                    {video.label}
+                  </p>
+                  {/* Curseur de progression */}
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    value={progress[i]}
+                    onChange={e => {
+                      const v = videoRefs[i].current;
+                      if (v && v.duration) {
+                        v.currentTime = (e.target.value / 100) * v.duration;
+                        setProgress(prev => prev.map((p, j) => j === i ? Number(e.target.value) : p));
+                      }
+                    }}
+                    style={{ width: '200px', accentColor: '#FF69B4', cursor: 'pointer' }}
+                  />
+                  {/* Bouton son */}
+                  <button
+                    onClick={() => setMuted(prev => prev.map((m, j) => j === i ? !m : m))}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-full border text-xs font-bold transition-all"
+                    style={{
+                      borderColor: '#FF69B4',
+                      color: muted[i] ? '#1A202C' : 'white',
+                      background: muted[i] ? 'transparent' : '#FF69B4',
+                    }}>
+                    {muted[i] ? '🔇 Son coupé' : '🔊 Son activé'}
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            {/* Lien page Facebook */}
+            <div className="flex justify-center pt-2">
+              <a href="https://www.facebook.com/wfla1ere"
+                target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold text-sm transition-all hover:shadow-lg hover:scale-105"
+                style={{ background: '#1877F2', textDecoration: 'none' }}>
+                <Globe size={16} /> Voir la page Facebook
+              </a>
+            </div>
+          </div>
+
+          {/* Carte du monde */}
+          <div className="space-y-3">
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Où se trouve Wallis-et-Futuna ?</p>
+            <div className="rounded-[20px] overflow-hidden" style={{ border: '2px solid #FFF9C4' }}>
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=110%2C-50%2C-100%2C50&layer=mapnik&marker=-13.2825%2C-176.12"
+                style={{ width: '100%', height: '300px', border: 'none', display: 'block' }}
+                title="Localisation de Wallis-et-Futuna"
+              />
+            </div>
+            <p className="text-xs italic text-center" style={{ color: '#1A202C', opacity: 0.5 }}>
+              Wallis-et-Futuna — Pacifique Sud, à environ 16 000 km de la France métropolitaine
             </p>
           </div>
 
@@ -1301,11 +1430,11 @@ const PageStages = ({ setActivePage }) => (
 
       <div className="bg-white rounded-[30px] p-8 border flex flex-col md:flex-row gap-6 items-center"
         style={{ borderColor: '#FFF9C4' }}>
-        <div className="shrink-0 text-center" style={{ fontSize: '4rem', lineHeight: 1 }}>🏃</div>
+        <img src="/intersport.png" alt="Intersport" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />
         <div className="flex-1 space-y-3">
           <div className="flex flex-wrap items-center gap-3">
             <h4 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Intersport — Guichainville</h4>
-            <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#FF69B4' }}>2024 · TC1</span>
+            <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ background: '#FFF9C4', color: '#FF69B4' }}>2025 · TC1</span>
           </div>
           <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
             Stage de première année effectué en <strong>vente</strong> au sein du magasin Intersport de Guichainville.
@@ -1334,7 +1463,8 @@ const PageStages = ({ setActivePage }) => (
       </button>
     </div>
   </div>
-);
+  );
+};
 
 const PageSAE = ({ setActivePage }) => {
   const [expanded, setExpanded] = useState(null);
@@ -1670,7 +1800,7 @@ const renderPage = (page, deps) => {
   if (page === 'ppp') return <PagePPP setActivePage={setActivePage} />;
   if (page === 'projet-transverse') return <PageProjetTransverse setActivePage={setActivePage} />;
   if (page === 'sae') return <PageSAE setActivePage={setActivePage} />;
-  if (page === 'stages') return <PageStages setActivePage={setActivePage} />;
+  if (page === 'stages') return <PageStages setActivePage={setActivePage} setActiveSkill={setSelectedSkill} />;
   if (projectTitles[page]) return <PagePlaceholder title={projectTitles[page]} />;
   return null;
 };
