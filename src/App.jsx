@@ -781,167 +781,128 @@ const PageCompetencesOverview = ({ setActivePage }) => (
     </div>
   </div>
 );
-const PageProjets = ({ setActivePage }) => (
-  <div className="space-y-12">
+const PageProjets = ({ setActivePage }) => {
+  const cards = [
+    {
+      page: 'sae',
+      icon: <Presentation size={24} style={{ color: '#FF69B4' }} />,
+      tag: 'S3 & S4',
+      titre: 'SAE',
+      desc: "Quatre situations d'apprentissage plongées dans des cas professionnels réels — de la création d'entreprise à la création d'un site web.",
+      details: [
+        { sem: 'S3', label: "Création d'entreprise" },
+        { sem: 'S3', label: "Analyse d'une activité digitale" },
+        { sem: 'S4', label: "Pilotage commercial" },
+        { sem: 'S4', label: "Création d'un site web" },
+      ],
+      accent: '#FFF9C4',
+    },
+    {
+      page: 'stages',
+      icon: <Building2 size={24} style={{ color: '#FF69B4' }} />,
+      tag: 'TC1 & TC2',
+      titre: 'Stages',
+      desc: "Deux immersions professionnelles — vente en Normandie et audiovisuel à l'autre bout du monde.",
+      details: [
+        { img: '/logofrance1.png', label: 'Wallis et Futuna — La 1ère' },
+        { img: '/intersport.png', label: 'Intersport — Guichainville' },
+      ],
+      accent: '#FFB6C1',
+    },
+    {
+      page: 'projet-transverse',
+      icon: <Target size={24} style={{ color: '#FF69B4' }} />,
+      tag: '2025–2026',
+      titre: 'Projet Transverse',
+      desc: "Création d'une entreprise fictive opérationnelle en équipe : Sweety Cake, coffee shop artisanal sans sucre raffiné.",
+      details: ['SARL', 'Coffee shop', 'Sans sucre raffiné', 'Haute-Normandie'],
+      accent: '#FFF9C4',
+    },
+    {
+      page: 'ppp',
+      icon: <Star size={24} style={{ color: '#FF69B4' }} />,
+      tag: 'S3 & S4',
+      titre: 'PPP',
+      desc: 'Projet Personnel et Professionnel — réflexion sur mes ambitions et la construction de mon avenir professionnel.',
+      details: ['Profil INTJ — Architecte', 'E-commerce, freelance, entrepreneuriat', 'Dossiers PPP S3 & S4'],
+      accent: '#FFB6C1',
+    },
+  ];
 
-    {/* Header */}
-    <div className="space-y-2">
-      <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Mes Projets</h2>
-      <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>SAE, stages, projet transverse, PPP — quatre dimensions d'un même parcours.</p>
-    </div>
-
-    {/* Cartes détaillées */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      {/* SAE */}
-      <div className="bg-white rounded-[30px] border overflow-hidden flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 cursor-pointer"
-        style={{ borderColor: '#FFF9C4' }}
-        onClick={() => setActivePage('sae')}
-        onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
-        onMouseLeave={e => e.currentTarget.style.borderColor = '#FFF9C4'}>
-        <div className="p-6 flex items-center gap-4" style={{ background: '#FFF9C4' }}>
-          <div className="p-3 rounded-2xl bg-white">
-            <Presentation size={28} style={{ color: '#FF69B4' }} />
-          </div>
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>S3 & S4</p>
-            <h3 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>SAE</h3>
-          </div>
-        </div>
-        <div className="p-6 space-y-4 flex-1 flex flex-col">
-          <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
-            Quatre situations d'apprentissage qui m'ont plongée dans des cas professionnels réels — de la création d'entreprise à la création d'un site web.
-          </p>
-          <div className="space-y-2 flex-1">
-            {[
-              { sem: 'S3', titre: 'Création d\'entreprise' },
-              { sem: 'S3', titre: 'Analyse d\'une activité digitale' },
-              { sem: 'S4', titre: 'Pilotage commercial d\'une organisation' },
-              { sem: 'S4', titre: 'Création d\'un site web' },
-            ].map((s, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <span className="text-xs font-bold px-2 py-0.5 rounded-full shrink-0" style={{ background: '#FFB6C1', color: '#1A202C' }}>{s.sem}</span>
-                <p className="text-xs" style={{ color: '#1A202C', opacity: 0.7 }}>{s.titre}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest pt-2" style={{ color: '#FF69B4' }}>
-            Découvrir <ArrowRight size={13} />
-          </div>
-        </div>
+  return (
+    <div className="space-y-10">
+      <div className="space-y-2">
+        <h2 className="text-4xl font-serif italic border-b-2 pb-2 inline-block" style={{ color: '#1A202C', borderColor: '#FF69B4' }}>Mes Projets</h2>
+        <p className="text-sm italic" style={{ color: '#1A202C', opacity: 0.55 }}>SAE, stages, projet transverse, PPP — quatre dimensions d'un même parcours.</p>
       </div>
 
-      {/* Stages */}
-      <div className="bg-white rounded-[30px] border overflow-hidden flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 cursor-pointer"
-        style={{ borderColor: '#FFF9C4' }}
-        onClick={() => setActivePage('stages')}
-        onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
-        onMouseLeave={e => e.currentTarget.style.borderColor = '#FFF9C4'}>
-        <div className="p-6 flex items-center gap-4" style={{ background: '#FFB6C1' }}>
-          <div className="p-3 rounded-2xl bg-white">
-            <Building2 size={28} style={{ color: '#FF69B4' }} />
-          </div>
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>TC1 & TC2</p>
-            <h3 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Stages</h3>
-          </div>
-        </div>
-        <div className="p-6 space-y-4 flex-1 flex flex-col">
-          <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
-            Deux immersions professionnelles — une en vente en Normandie, une dans l'audiovisuel à l'autre bout du monde.
-          </p>
-          <div className="space-y-3 flex-1">
-            <div className="flex items-start gap-3 p-3 rounded-2xl" style={{ background: '#FFF9C4' }}>
-              <img src="/logofrance1.png" alt="La 1ère" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
-              <div>
-                <p className="text-xs font-bold" style={{ color: '#1A202C' }}>Wallis et Futuna — La 1ère</p>
-                <p className="text-xs" style={{ color: '#1A202C', opacity: 0.6 }}>TC2 · Audiovisuel · Pacifique Sud</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {cards.map((c) => (
+          <div key={c.page}
+            className="bg-white rounded-[28px] border flex flex-col cursor-pointer transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden"
+            style={{ borderColor: '#F3F4F6' }}
+            onClick={() => setActivePage(c.page)}
+            onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
+            onMouseLeave={e => e.currentTarget.style.borderColor = '#F3F4F6'}>
+
+            {/* Bande couleur fine en haut */}
+            <div className="h-1.5 w-full" style={{ background: c.accent === '#FFF9C4' ? '#FF69B4' : '#FFB6C1' }} />
+
+            <div className="p-6 flex flex-col gap-4 flex-1">
+              {/* En-tête */}
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-2xl" style={{ background: c.accent }}>
+                  {c.icon}
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>{c.tag}</p>
+                  <h3 className="text-xl font-bold font-serif italic leading-tight" style={{ color: '#1A202C' }}>{c.titre}</h3>
+                </div>
+              </div>
+
+              {/* Description */}
+              <p className="text-sm leading-relaxed flex-1" style={{ color: '#1A202C', opacity: 0.65 }}>{c.desc}</p>
+
+              {/* Détails */}
+              {c.page === 'sae' && (
+                <div className="grid grid-cols-2 gap-2">
+                  {c.details.map((s, i) => (
+                    <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-xl" style={{ background: '#F9FAFB' }}>
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md shrink-0" style={{ background: '#FF69B4', color: 'white' }}>{s.sem}</span>
+                      <p className="text-[11px]" style={{ color: '#1A202C', opacity: 0.75 }}>{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {c.page === 'stages' && (
+                <div className="space-y-2">
+                  {c.details.map((s, i) => (
+                    <div key={i} className="flex items-center gap-2.5 px-3 py-2 rounded-xl" style={{ background: '#F9FAFB' }}>
+                      <img src={s.img} alt="" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
+                      <p className="text-[11px] font-medium" style={{ color: '#1A202C' }}>{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {(c.page === 'projet-transverse' || c.page === 'ppp') && (
+                <div className="flex flex-wrap gap-1.5">
+                  {c.details.map((t, i) => (
+                    <span key={i} className="text-[11px] px-3 py-1 rounded-full" style={{ background: c.accent, color: '#1A202C' }}>{t}</span>
+                  ))}
+                </div>
+              )}
+
+              {/* CTA */}
+              <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest pt-1" style={{ color: '#FF69B4' }}>
+                Découvrir <ArrowRight size={13} />
               </div>
             </div>
-            <div className="flex items-start gap-3 p-3 rounded-2xl" style={{ background: '#FFF9C4' }}>
-              <img src="/intersport.png" alt="Intersport" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
-              <div>
-                <p className="text-xs font-bold" style={{ color: '#1A202C' }}>Intersport — Guichainville</p>
-                <p className="text-xs" style={{ color: '#1A202C', opacity: 0.6 }}>TC1 · Vente · Relation client</p>
-              </div>
-            </div>
           </div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest pt-2" style={{ color: '#FF69B4' }}>
-            Découvrir <ArrowRight size={13} />
-          </div>
-        </div>
+        ))}
       </div>
-
-      {/* Projet Transverse */}
-      <div className="bg-white rounded-[30px] border overflow-hidden flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 cursor-pointer"
-        style={{ borderColor: '#FFF9C4' }}
-        onClick={() => setActivePage('projet-transverse')}
-        onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
-        onMouseLeave={e => e.currentTarget.style.borderColor = '#FFF9C4'}>
-        <div className="p-6 flex items-center gap-4" style={{ background: '#FFF9C4' }}>
-          <div className="p-3 rounded-2xl bg-white">
-            <Target size={28} style={{ color: '#FF69B4' }} />
-          </div>
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>Jeunes Pousses · 2025–2026</p>
-            <h3 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>Projet Transverse</h3>
-          </div>
-        </div>
-        <div className="p-6 space-y-4 flex-1 flex flex-col">
-          <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
-            Création de A à Z d'une entreprise fictive mais opérationnelle en équipe de 4 : <strong>Sweety Cake</strong>, un coffee shop artisanal sans sucre raffiné.
-          </p>
-          <div className="flex flex-wrap gap-2 flex-1 content-start">
-            {['SARL', 'Coffee shop', 'Sans sucre raffiné', 'Distributeurs auto.', 'Haute-Normandie', 'Production & Finitions'].map((t, i) => (
-              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: '#FFB6C1', color: '#1A202C' }}>{t}</span>
-            ))}
-          </div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest pt-2" style={{ color: '#FF69B4' }}>
-            Découvrir <ArrowRight size={13} />
-          </div>
-        </div>
-      </div>
-
-      {/* PPP */}
-      <div className="bg-white rounded-[30px] border overflow-hidden flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 cursor-pointer"
-        style={{ borderColor: '#FFF9C4' }}
-        onClick={() => setActivePage('ppp')}
-        onMouseEnter={e => e.currentTarget.style.borderColor = '#FF69B4'}
-        onMouseLeave={e => e.currentTarget.style.borderColor = '#FFF9C4'}>
-        <div className="p-6 flex items-center gap-4" style={{ background: '#FFB6C1' }}>
-          <div className="p-3 rounded-2xl bg-white">
-            <Star size={28} style={{ color: '#FF69B4' }} />
-          </div>
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#FF69B4' }}>S3 & S4</p>
-            <h3 className="text-xl font-bold font-serif italic" style={{ color: '#1A202C' }}>PPP</h3>
-          </div>
-        </div>
-        <div className="p-6 space-y-4 flex-1 flex flex-col">
-          <p className="text-sm leading-relaxed" style={{ color: '#1A202C', opacity: 0.7 }}>
-            Projet Personnel et Professionnel — une réflexion sur moi-même, mes ambitions et la construction de mon avenir professionnel.
-          </p>
-          <div className="space-y-2 flex-1">
-            {[
-              { emoji: '🧠', texte: 'Profil INTJ — Architecte' },
-              { emoji: '🎯', texte: 'Ambitions : e-commerce, freelance, entrepreneuriat' },
-              { emoji: '📄', texte: 'Dossiers PPP S3 & S4' },
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <span>{item.emoji}</span>
-                <p className="text-xs" style={{ color: '#1A202C', opacity: 0.7 }}>{item.texte}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest pt-2" style={{ color: '#FF69B4' }}>
-            Découvrir <ArrowRight size={13} />
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-);
+  );
+};
 const PagePPP = ({ setActivePage }) => (
   <div className="space-y-12">
     <div className="space-y-2">
