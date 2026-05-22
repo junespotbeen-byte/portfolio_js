@@ -205,6 +205,27 @@ const ModalSkill = ({ skill, onClose }) => {
       { titre: "Diapo Barbie", legende: "Initiation au mix marketing avec la marque Barbie", fichier: "/preuves/ac21.04/diapo-barbie.pdf" },
       { titre: "Matrice BCG", legende: "Exercice d'analyse de portefeuille via la matrice BCG", fichier: "/preuves/ac21.04/matrice-bcg.pdf" },
     ],
+    "AC23.01 - Élaborer une stratégie de communication adaptée au brief agence": [
+      { titre: "Diapo 3 Suisses", legende: "Support de présentation de l'analyse des 3 Suisses", fichier: "/preuves/ac23.01/3-suisses-fr-diapo.pdf" },
+      { titre: "Dossier 3 Suisses", legende: "Dossier complet de l'analyse stratégique des 3 Suisses", fichier: "/preuves/ac23.01/3-suisses-fr-dossier.pdf" },
+      { titre: "Buyer Personas", legende: "Création de buyer personas détaillés", fichier: "/preuves/ac23.01/buyer-persona.pdf" },
+      { titre: "Journal GenZ", legende: "Journal fictif sur la génération Z", fichier: "/preuves/ac23.01/journal-genz.pdf" },
+    ],
+    "AC23.02 - Établir une stratégie de moyens en utilisant les indicateurs de choix des supports": [
+      { titre: "Comparaison réseaux sociaux", legende: "Comparaison des réseaux sociaux Vertbaudet vs Made in Bébé", fichier: "/preuves/ac23.02/comparaison-reseaux-sociaux.pdf" },
+      { titre: "Flipbook BUT TC", legende: "Flipbook réalisé dans le cadre du BUT TC", fichier: "/preuves/ac23.02/flipbook.pdf" },
+      { titre: "Stratégie digitale & influenceurs", legende: "Stratégie digitale avec influenceurs", fichier: "/preuves/ac23.02/strategie-digital-influenceurs.pdf" },
+    ],
+    "AC23.03 - Proposer un plan de communication 360 en élaborant les supports et en veillant à leur efficacité": [
+      { titre: "Flipbook BUT TC", legende: "Support événementiel réalisé dans le cadre du BUT TC", fichier: "/preuves/ac23.03/flipbook.pdf" },
+      { titre: "Journal GenZ", legende: "Journal fictif GenZ — support presse multi-canal", fichier: "/preuves/ac23.03/journal-genz.pdf" },
+      { titre: "Support com Sweety Cake", legende: "Support de communication du projet Sweety Cake", fichier: "/preuves/ac23.03/support-com-sweetycake.pdf" },
+    ],
+    "AC23.04 - Mettre en oeuvre une stratégie digitale (blog, réseaux sociaux, influenceurs) en mesurant les performances et en veillant à l'e-réputation": [
+      { titre: "Comparaison réseaux sociaux", legende: "Analyse comparative des réseaux sociaux", fichier: "/preuves/ac23.04/comparaison-reseaux-sociaux.pdf" },
+      { titre: "Diapo SAE Ingenium", legende: "Présentation SAE Ingenium", fichier: "/preuves/ac23.04/diapo-sae-ingenium.pdf" },
+      { titre: "Stratégie digitale & influenceurs", legende: "Stratégie digitale et influenceurs", fichier: "/preuves/ac23.04/strategie-digital-influenceurs.pdf" },
+    ],
   };
   const getSkillStatus = () => {
     for (const comp of Object.values(COMPETENCES)) {
