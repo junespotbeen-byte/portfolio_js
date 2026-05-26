@@ -779,6 +779,10 @@ const PageCompetencesOverview = ({ setActivePage }) => (
         </div>
       ))}
     </div>
+
+    <p className="text-sm italic text-center pt-4" style={{ color: '#1A202C', opacity: 0.55 }}>
+      Vous remarquerez qu'aucun AC n'est qualifié de « maîtrisé » — c'est un choix délibéré. Je crois profondément que dans la vie rien n'est jamais totalement acquis, et qu'il ne faut jamais cesser de se former tout au long de sa vie.
+    </p>
   </div>
 );
 const PageProjets = ({ setActivePage }) => {
