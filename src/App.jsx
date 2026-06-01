@@ -249,6 +249,36 @@ const ModalSkill = ({ skill, onClose }) => {
     "AC24.05 - Respecter le processus logistique": [
       { titre: "Analyse Carrefour", legende: "Étude des enjeux logistiques e-commerce à travers le cas Carrefour", fichier: "/preuves/ac24.05/analyse-carrefour-dossier.pdf" },
     ],
+    "AC25.01 - Concevoir un modèle d'affaires simplifié": [
+      { titre: "Dossier SAE Fusion Food", legende: "Dossier complet du modèle d'affaires d'un concept de restauration fusion", fichier: "/preuves/ac25.01/dossier-sae-fusionfood.pdf" },
+      { titre: "Diapo SAE Fusion Food", legende: "Support de présentation du modèle d'affaires SAE Fusion Food", fichier: "/preuves/ac25.01/diapo-sae-fusionfood.pdf" },
+      { titre: "Affiche Carrefour", legende: "Affiche réalisée dans le cadre de l'analyse du modèle d'affaires de Carrefour", fichier: "/preuves/ac25.01/affiche-carrefour.pdf" },
+      { titre: "Affiche Made in Bébé", legende: "Affiche réalisée dans le cadre de l'analyse du modèle d'affaires de Made in Bébé", fichier: "/preuves/ac25.01/affiche-madeinbébé.pdf" },
+    ],
+    "AC25.02 - Analyser de façon pertinente la situation marché-entreprise grâce aux outils de diagnostic stratégique": [
+      { titre: "Diapo Barbie", legende: "Diagnostic stratégique appliqué à la marque Barbie", fichier: "/preuves/ac25.02/diapo-barbie.pdf" },
+      { titre: "Analyse Carrefour", legende: "Analyse stratégique complète de la situation marché de Carrefour (SWOT, PESTEL...)", fichier: "/preuves/ac25.02/analyse-carrefour-dossier.pdf" },
+      { titre: "Étude de marché Sweety Cake", legende: "Étude de marché réalisée pour le projet transverse Sweety Cake", fichier: "/preuves/ac25.02/etude-marché-sweetycake.pdf" },
+    ],
+    "AC25.03 - Analyser la situation financière d'une entreprise à partir des éléments de la comptabilité générale": [
+      { titre: "Proposition commerciale", legende: "Proposition commerciale intégrant des éléments de chiffrage et d'analyse financière", fichier: "/preuves/ac25.03/proposition-commerciale.pdf" },
+      { titre: "Tableau de bord — Cas Alix", legende: "Exercice d'analyse financière à partir d'un tableau de bord (cas Alix)", fichier: "/preuves/ac25.03/cas-alix-tdb.pdf" },
+      { titre: "SAE Atelier de Cuisine", legende: "Analyse financière réalisée dans le cadre du jeu de simulation Créasim", fichier: "/preuves/ac25.03/sae-atelier-cuisine.pdf" },
+    ],
+    "AC25.04 - Identifier les éléments pertinents nécessaires à la réalisation du projet": [
+      { titre: "Diapo SAE Ingenium", legende: "Cadrage et identification des éléments clés du projet SAE Ingenium", fichier: "/preuves/ac25.04/diapo-sae-ingenium.pdf" },
+      { titre: "Dossier Sweety Cake", legende: "Dossier Sweety Cake — définition des besoins et ressources nécessaires à la réalisation", fichier: "/preuves/ac25.04/dossier-sweety-cake.pdf" },
+    ],
+    "AC25.05 - Utiliser les techniques de créativité individuelle et collective": [
+      { titre: "Projets créativité & innovation", legende: "Recueil de projets mobilisant des techniques de créativité individuelle et collective", fichier: "/preuves/ac25.05/projets-crétivité-innovation.pdf" },
+      { titre: "Détournement d'œuvre", legende: "Exercice de détournement d'œuvre — technique de créativité individuelle", fichier: "/preuves/ac25.05/détournement-oeuvre.pdf" },
+      { titre: "Dossier Sweety Cake", legende: "Projet né d'un processus créatif collectif (brainstorming, mind mapping)", fichier: "/preuves/ac25.05/dossier-sweety-cake.pdf" },
+    ],
+    "AC25.06 - Contribuer à l'enrichissement d'un projet collectif": [
+      { titre: "Diapo SAE Défimax VTT", legende: "Contribution active à un projet collectif de pilotage commercial", fichier: "/preuves/ac25.06/diapo-sae-défimax-vtt.pdf" },
+      { titre: "Flipbook BUT TC", legende: "Flipbook réalisé en équipe pour promouvoir le BUT TC", fichier: "/preuves/ac25.06/flipbook.pdf" },
+      { titre: "Dossier Sweety Cake", legende: "Projet collectif mené sur toute l'année — contribution à chaque étape", fichier: "/preuves/ac25.06/dossier-sweety-cake.pdf" },
+    ],
   };
   const getSkillStatus = () => {
     for (const comp of Object.values(COMPETENCES)) {
