@@ -205,6 +205,14 @@ const ModalSkill = ({ skill, onClose }) => {
       { titre: "Diapo Barbie", legende: "Initiation au mix marketing avec la marque Barbie", fichier: "/preuves/ac21.04/diapo-barbie.pdf" },
       { titre: "Matrice BCG", legende: "Exercice d'analyse de portefeuille via la matrice BCG", fichier: "/preuves/ac21.04/matrice-bcg.pdf" },
     ],
+    "AC22.01 - Convaincre en exprimant avec empathie l'offre en termes d'avantages personnalisés": [
+      { titre: "Proposition commerciale", legende: "Proposition commerciale rédigée pour convaincre un client en valorisant l'offre par ses avantages", fichier: "/preuves/ac22.01/proposition-commerciale.pdf" },
+    ],
+    "AC22.02 - Négocier le prix : défendre et valoriser l'offre en percevant les stratégies d'achat": [],
+    "AC22.03 - Maîtriser les éléments juridiques et comptables de l'offre": [],
+    "AC22.04 - Utiliser les outils d'aide à la vente (OAV) à bon escient pour convaincre": [],
+    "AC22.05 - Organiser le suivi de ses résultats pour gagner en performance au sein de l'équipe commerciale": [],
+    "AC22.06 - Prendre en compte les enjeux de la fonction achat pour la performance économique de l'entreprise": [],
     "AC23.01 - Élaborer une stratégie de communication adaptée au brief agence": [
       { titre: "Diapo 3 Suisses", legende: "Support de présentation de l'analyse des 3 Suisses", fichier: "/preuves/ac23.01/3-suisses-fr-diapo.pdf" },
       { titre: "Dossier 3 Suisses", legende: "Dossier complet de l'analyse stratégique des 3 Suisses", fichier: "/preuves/ac23.01/3-suisses-fr-dossier.pdf" },
@@ -358,7 +366,7 @@ const ModalSkill = ({ skill, onClose }) => {
                     ))
                   ) : (
                     <p className="text-xs italic text-center" style={{ color: '#1A202C', opacity: 0.45 }}>
-                      Preuves à venir...
+                      Pas de preuve disponible pour le moment.
                     </p>
                   )}
                 </div>
