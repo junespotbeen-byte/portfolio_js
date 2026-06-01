@@ -226,6 +226,29 @@ const ModalSkill = ({ skill, onClose }) => {
       { titre: "Diapo SAE Ingenium", legende: "Présentation SAE Ingenium", fichier: "/preuves/ac23.04/diapo-sae-ingenium.pdf" },
       { titre: "Stratégie digitale & influenceurs", legende: "Stratégie digitale et influenceurs", fichier: "/preuves/ac23.04/strategie-digital-influenceurs.pdf" },
     ],
+    "AC24.01 - Mobiliser des indicateurs de performance en fonction du volume et de la variété des données": [
+      { titre: "Comparaison réseaux sociaux", legende: "Analyse comparative des indicateurs de performance sur les réseaux sociaux de Vertbaudet et Made in Bébé", fichier: "/preuves/ac24.01/comparaison-reseaux-sociaux.pdf" },
+      { titre: "Affiche Carrefour", legende: "Affiche réalisée à partir de l'analyse des données digitales de Carrefour", fichier: "/preuves/ac24.01/affiche-carrefour.pdf" },
+    ],
+    "AC24.02 - Identifier les spécificités du marketing digital": [
+      { titre: "Analyse Carrefour", legende: "Étude complète de l'activité digitale et des leviers marketing de Carrefour", fichier: "/preuves/ac24.02/analyse-carrefour-dossier.pdf" },
+      { titre: "Dossier 3suisses.fr", legende: "Analyse des spécificités du marketing digital du site 3suisses.fr", fichier: "/preuves/ac24.02/3suisses.fr-dossier.pdf" },
+      { titre: "Stratégie influenceurs", legende: "Stratégie de marketing d'influence conçue pour Made in Bébé", fichier: "/preuves/ac24.02/stratégie-influenceurs.pdf" },
+      { titre: "Innovation collier connecté", legende: "Projet d'innovation digitale autour d'un collier connecté pour chien", fichier: "/preuves/ac24.02/innovation-collier-chien.pdf" },
+      { titre: "Diapo Barbie", legende: "Décryptage des leviers digitaux mobilisés autour de la sortie du film Barbie", fichier: "/preuves/ac24.02/barbie-diapo.pdf" },
+    ],
+    "AC24.03 - Utiliser un cahier des charges e-business": [
+      { titre: "Site CARE Organisationnel", legende: "Cahier des charges pour la création du site web du CARE Organisationnel", fichier: "/preuves/ac24.03/site-care-organisationnel.pdf" },
+      { titre: "Projet Sweety Cake", legende: "Cahier des charges e-business du projet transverse Sweety Cake", fichier: "/preuves/ac24.03/projet-sweety-cake.pdf" },
+      { titre: "Plan portfolio", legende: "Document de planification et de cadrage pour la création de mon portfolio", fichier: "/preuves/ac24.03/plan-portfolio.pdf" },
+    ],
+    "AC24.04 - Intégrer les spécificités du e-commerce": [
+      { titre: "Analyse Carrefour", legende: "Étude du modèle e-commerce et de l'expérience client en ligne de Carrefour", fichier: "/preuves/ac24.04/analyse-carrefour-dossier.pdf" },
+      { titre: "Analyse Made in Bébé", legende: "Analyse du parcours d'achat et des spécificités e-commerce de Made in Bébé", fichier: "/preuves/ac24.04/analyse-madeinbebe-dossier.pdf" },
+    ],
+    "AC24.05 - Respecter le processus logistique": [
+      { titre: "Analyse Carrefour", legende: "Étude des enjeux logistiques e-commerce à travers le cas Carrefour", fichier: "/preuves/ac24.05/analyse-carrefour-dossier.pdf" },
+    ],
   };
   const getSkillStatus = () => {
     for (const comp of Object.values(COMPETENCES)) {
